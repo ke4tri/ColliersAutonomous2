@@ -12,7 +12,7 @@ import Locations from '../components/pages/Locations/Locations';
 import RoutePath from '../components/pages/RoutePath/RoutePath';
 import RouteAdd from '../components/pages/RouteAdd/RouteAdd';
 import RouteEdit from '../components/pages/RouteEdit/RouteEdit';
-// import About from '../components/pages/About/About';
+import About from '../components/pages/About/About';
 import connection from '../helpers/data/connection';
 // import { Button } from 'reactstrap';
 import './App.scss';
@@ -77,6 +77,8 @@ class App extends React.Component {
             <div className='container'>
             <div className='row'>
                 <Switch>
+                  <PublicRoute path='/auth' component={Auth} authed={this.state.authed} />
+                  {/* <PublicRoute path='/' exact component={Auth} authed={this.state.authed} /> */}
                   <PrivateRoute path='/' exact component={Devices} authed={this.state.authed} />
                   <PrivateRoute path='/devices' component={Devices} authed={this.state.authed} />
                   <PrivateRoute path='/locations/:id' component={RoutePath} authed={this.state.authed} />
@@ -84,8 +86,8 @@ class App extends React.Component {
                   <PrivateRoute path='/route/:id/edit'component={RouteEdit} authed={this.state.authed} />
                   <PrivateRoute path='/route/add' component={RouteAdd} authed={this.state.authed} />
                   <PrivateRoute path='/launch' component={Launch} authed={this.state.authed} />
-                  <PublicRoute path='/auth' component={Auth} authed={this.state.authed} />
-                  {/* <PublicRoute path='/about' exact component={Auth} authed={this.state.authed} /> */}
+                  <PublicRoute path='/about' exact component={About} authed={this.state.authed} />
+                  <PrivateRoute path='/about2' exact component={About} authed={this.state.authed} />
                 </Switch>
               </div>
             </div>

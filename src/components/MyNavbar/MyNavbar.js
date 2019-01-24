@@ -10,6 +10,8 @@ import {
   NavItem,
   NavLink,
 } from 'reactstrap';
+import authRequests from '../../helpers/data/authRequest';
+
 import './MyNavbar.scss';
 
 class MyNavbar extends React.Component {
@@ -21,6 +23,18 @@ class MyNavbar extends React.Component {
   state = {
     isOpen: false,
   };
+
+  changeView = () => {
+    this.props.history.push('/about');
+  }
+
+  authenticateUser = (e) => {
+    e.preventDefault();
+    authRequests.authenticate().then(() => {
+      // this is going to need to change to page with button to take to launch
+      this.props.history.push('/devices');
+    }).catch(err => console.error('error in auth', err));
+  }
 
   toggle() {
     this.setState({
@@ -44,12 +58,22 @@ class MyNavbar extends React.Component {
             <NavLink tag={RRNavLink} to='/launch'><i className="fas fa-plane-departure fa-2x"></i></NavLink>
           </NavItem>
           <NavItem>
+            <NavLink tag={RRNavLink} to='/about2'><i className="fas fa-question fa-2x"></i></NavLink>
+          </NavItem>
+          <NavItem>
             <NavLink onClick={logoutClickEvent}>Logout</NavLink>
           </NavItem>
         </Nav>
         );
       }
-      return <Nav className='ml-auto' navbar />;
+      return <Nav className='ml-auto' navbar >
+      <NavItem>
+        <NavLink onClick={this.authenticateUser}><i className="fas fa-sign-in-alt fa-4x"></i></NavLink>
+      </NavItem>
+      <NavItem>
+          <NavLink tag={RRNavLink} to='/about'><i className="fas fa-question fa-4x"></i></NavLink>
+      </NavItem>
+      </Nav>;
     };
 
     return (
