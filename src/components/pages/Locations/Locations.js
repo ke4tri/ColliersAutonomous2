@@ -7,7 +7,7 @@ class Locations extends React.Component {
       <div className='Home'>
         <h2>Locations</h2>
       </div>
-    )
+    );
   }
 }
 

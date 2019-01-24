@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { NavLink as RRNavLink } from 'react-router-dom';
 import {
   Collapse,
   Navbar,
@@ -33,22 +34,28 @@ class MyNavbar extends React.Component {
       if (isAuthed) {
         return (
           <Nav className='ml-auto' navbar>
-            {/*
-            <NavItem>
-              <NavLink tag={RRNavLink} to='/articles'><i className="fas fa-newspaper fa-2x"></i></NavLink>
-            </NavItem> */}
-            <NavItem>
-              <NavLink onClick={logoutClickEvent}>Logout</NavLink>
-            </NavItem>
-          </Nav>
+          <NavItem>
+            <NavLink tag={RRNavLink} to='/locations'><i className="fas fa-map-marked fa-2x"></i></NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink tag={RRNavLink} to='/devices'><i className="fas fa-plane fa-2x"></i></NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink tag={RRNavLink} to='/launch'><i className="fas fa-plane-departure fa-2x"></i></NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink onClick={logoutClickEvent}>Logout</NavLink>
+          </NavItem>
+        </Nav>
         );
       }
       return <Nav className='ml-auto' navbar />;
     };
+
     return (
       <div className="myNavbar">
-<Navbar color="dark" dark expand="md">
-          <NavbarBrand href="/">React Nutshell</NavbarBrand>
+      <Navbar color="dark" dark expand="md">
+          <NavbarBrand href="/">Colliers Autonomous</NavbarBrand>
           <NavbarToggler onClick={e => this.toggle(e)} />
           <Collapse isOpen={this.state.isOpen} navbar>
             {buildNavbar()}

@@ -8,7 +8,7 @@ class Auth extends React.Component {
   authenticateUser = (e) => {
     e.preventDefault();
     authRequests.authenticate().then(() => {
-      this.props.history.push('/home');
+      this.props.history.push('/devices');
     }).catch(err => console.error('error in auth', err));
   }
 

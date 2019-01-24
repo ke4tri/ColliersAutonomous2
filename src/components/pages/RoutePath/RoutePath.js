@@ -7,7 +7,7 @@ class Route extends React.Component {
       <div className='Home'>
         <h2>Route</h2>
       </div>
-    )
+    );
   }
 }
 
