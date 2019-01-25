@@ -68,10 +68,10 @@ class MyNavbar extends React.Component {
       }
       return <Nav className='ml-auto' navbar >
       <NavItem>
-        <NavLink onClick={this.authenticateUser}><i className="fas fa-sign-in-alt fa-4x"></i></NavLink>
+        <NavLink onClick={this.authenticateUser}><i className="fas fa-sign-in-alt fa-3x"></i></NavLink>
       </NavItem>
       <NavItem>
-          <NavLink tag={RRNavLink} to='/about'><i className="fas fa-question fa-4x"></i></NavLink>
+          <NavLink tag={RRNavLink} to='/about'><i className="fas fa-question fa-3x"></i></NavLink>
       </NavItem>
       </Nav>;
     };
@@ -79,7 +79,7 @@ class MyNavbar extends React.Component {
     return (
       <div className="myNavbar">
       <Navbar color="dark" dark expand="md">
-          <NavbarBrand href="/">Colliers Autonomous</NavbarBrand>
+          <NavbarBrand href="/"><img src="https://github.com/ke4tri/personal-bi-site2/blob/master/src/img/logo2.png?raw=true" width={600} height={50}></img></NavbarBrand>
           <NavbarToggler onClick={e => this.toggle(e)} />
           <Collapse isOpen={this.state.isOpen} navbar>
             {buildNavbar()}
