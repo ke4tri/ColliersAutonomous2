@@ -4,6 +4,7 @@ import 'firebase/auth';
 import {
   BrowserRouter, Route, Redirect, Switch,
 } from 'react-router-dom';
+
 import MyNavbar from '../components/MyNavbar/MyNavbar';
 import Auth from '../components/pages/Auth/Auth';
 import Devices from '../components/pages/Devices/Devices';
@@ -14,9 +15,10 @@ import RouteAdd from '../components/pages/RouteAdd/RouteAdd';
 import RouteEdit from '../components/pages/RouteEdit/RouteEdit';
 import About from '../components/pages/About/About';
 import connection from '../helpers/data/connection';
-// import { Button } from 'reactstrap';
-import './App.scss';
 import authRequests from '../helpers/data/authRequest';
+import './App.scss';
+// import deviceRequest from '../helpers/data/deviceRequest';
+
 
 const PublicRoute = ({ component: Component, authed, ...rest }) => {
   const routeChecker = props => (authed === false
@@ -31,6 +33,7 @@ const PrivateRoute = ({ component: Component, authed, ...rest }) => {
     : (<Redirect to={{ pathname: '/auth', state: { from: props.location } }} />));
   return <Route {...rest} render={props => routeChecker(props)} />;
 };
+
 
 class App extends React.Component {
   state = {
@@ -55,6 +58,9 @@ class App extends React.Component {
     });
   }
 
+  componentWillMount() {
+  }
+
   componentWillUnmount() {
     this.removeListener();
   }
@@ -63,6 +69,7 @@ class App extends React.Component {
     const { authed, pendingUser } = this.state;
     const logoutClickEvent = () => {
       authRequests.logoutUser();
+      authRequests.getCurrentUid();
       this.setState({ authed: false });
     };
 
