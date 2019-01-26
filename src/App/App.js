@@ -4,6 +4,7 @@ import 'firebase/auth';
 import {
   BrowserRouter, Route, Redirect, Switch,
 } from 'react-router-dom';
+
 import MyNavbar from '../components/MyNavbar/MyNavbar';
 import Auth from '../components/pages/Auth/Auth';
 import Devices from '../components/pages/Devices/Devices';
@@ -14,9 +15,10 @@ import RouteAdd from '../components/pages/RouteAdd/RouteAdd';
 import RouteEdit from '../components/pages/RouteEdit/RouteEdit';
 import About from '../components/pages/About/About';
 import connection from '../helpers/data/connection';
-// import { Button } from 'reactstrap';
 import './App.scss';
 import authRequests from '../helpers/data/authRequest';
+import deviceRequest from '../helpers/data/deviceRequest';
+// import getDevices from '../helpers';
 
 const PublicRoute = ({ component: Component, authed, ...rest }) => {
   const routeChecker = props => (authed === false
@@ -32,10 +34,25 @@ const PrivateRoute = ({ component: Component, authed, ...rest }) => {
   return <Route {...rest} render={props => routeChecker(props)} />;
 };
 
+
 class App extends React.Component {
   state = {
     authed: false,
     pendingUser: true,
+    devices: [],
+    uid: '',
+  }
+
+  getSomeData = () => {
+    // const uid = authRequests.getCurrentUid();
+    // this.setState({ uid });
+    console.log(this.state.uid);
+    deviceRequest.getDevices()
+      .then((devicesArray) => {
+        this.setState({ devicesArray });
+        console.log('State at start', this.state.devicesArray);
+      })
+      .catch(err => console.error('error with getWeather', err));
   }
 
   componentDidMount() {
@@ -55,6 +72,10 @@ class App extends React.Component {
     });
   }
 
+  componentWillMount() {
+    this.getSomeData();
+  }
+
   componentWillUnmount() {
     this.removeListener();
   }
@@ -63,6 +84,7 @@ class App extends React.Component {
     const { authed, pendingUser } = this.state;
     const logoutClickEvent = () => {
       authRequests.logoutUser();
+      authRequests.getCurrentUid();
       this.setState({ authed: false });
     };
 
@@ -80,7 +102,7 @@ class App extends React.Component {
                   <PublicRoute path='/auth' component={Auth} authed={this.state.authed} />
                   {/* <PublicRoute path='/' exact component={Auth} authed={this.state.authed} /> */}
                   <PrivateRoute path='/' exact component={Devices} authed={this.state.authed} />
-                  <PrivateRoute path='/devices' component={Devices} authed={this.state.authed} />
+                  <PrivateRoute path='/devices' component={() => <Devices uid={this.state.uid} />} authed={this.state.authed} />
                   <PrivateRoute path='/locations/:id' component={RoutePath} authed={this.state.authed} />
                   <PrivateRoute path='/locations' component={Locations} authed={this.state.authed} />
                   <PrivateRoute path='/route/:id/edit'component={RouteEdit} authed={this.state.authed} />
