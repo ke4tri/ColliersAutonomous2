@@ -15,10 +15,10 @@ import RouteAdd from '../components/pages/RouteAdd/RouteAdd';
 import RouteEdit from '../components/pages/RouteEdit/RouteEdit';
 import About from '../components/pages/About/About';
 import connection from '../helpers/data/connection';
-import './App.scss';
 import authRequests from '../helpers/data/authRequest';
-import deviceRequest from '../helpers/data/deviceRequest';
-// import getDevices from '../helpers';
+import './App.scss';
+// import deviceRequest from '../helpers/data/deviceRequest';
+
 
 const PublicRoute = ({ component: Component, authed, ...rest }) => {
   const routeChecker = props => (authed === false
@@ -39,20 +39,6 @@ class App extends React.Component {
   state = {
     authed: false,
     pendingUser: true,
-    devices: [],
-    uid: '',
-  }
-
-  getSomeData = () => {
-    // const uid = authRequests.getCurrentUid();
-    // this.setState({ uid });
-    console.log(this.state.uid);
-    deviceRequest.getDevices()
-      .then((devicesArray) => {
-        this.setState({ devicesArray });
-        console.log('State at start', this.state.devicesArray);
-      })
-      .catch(err => console.error('error with getWeather', err));
   }
 
   componentDidMount() {
@@ -73,7 +59,6 @@ class App extends React.Component {
   }
 
   componentWillMount() {
-    this.getSomeData();
   }
 
   componentWillUnmount() {
@@ -102,7 +87,7 @@ class App extends React.Component {
                   <PublicRoute path='/auth' component={Auth} authed={this.state.authed} />
                   {/* <PublicRoute path='/' exact component={Auth} authed={this.state.authed} /> */}
                   <PrivateRoute path='/' exact component={Devices} authed={this.state.authed} />
-                  <PrivateRoute path='/devices' component={() => <Devices uid={this.state.uid} />} authed={this.state.authed} />
+                  <PrivateRoute path='/devices' component={Devices} authed={this.state.authed} />
                   <PrivateRoute path='/locations/:id' component={RoutePath} authed={this.state.authed} />
                   <PrivateRoute path='/locations' component={Locations} authed={this.state.authed} />
                   <PrivateRoute path='/route/:id/edit'component={RouteEdit} authed={this.state.authed} />

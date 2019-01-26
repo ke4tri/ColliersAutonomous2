@@ -1,0 +1,66 @@
+{
+  "devices" : {
+    "device1" : {
+      "name" : "Tello",
+      "faaSerial" : "None",
+      "uid" : "vvmEW6eWp9OjkPyelGTRNEGy7ov2",
+      "manufacture" : "IBM"
+    },
+    "device2" : {
+      "name" : "Rolling Spider",
+      "faaSerial" : "None",
+      "uid" : "vvmEW6eWp9OjkPyelGTRNEGy7ov2",
+      "manufacture" : "Parrot"
+    },
+    "device3" : {
+      "name" : "Home Brew",
+      "faaSerial" : "x2fi334",
+      "uid" : "2535689203",
+      "manufacture" : "None"
+    }
+  },
+  "locations" : {
+    "location1" : {
+      "name" : "Park",
+      "uid" : "vvmEW6eWp9OjkPyelGTRNEGy7ov2"
+    },
+    "location2" : {
+      "name" : "Park",
+      "uid" : "vvmEW6eWp9OjkPyelGTRNEGy7ov2"
+    }
+  },
+  "routes" : {
+    "route1" : {
+      "flightName" : "far",
+      "lat" : "35.921399",
+      "long" :" -86.860575",
+      "uid" : "vvmEW6eWp9OjkPyelGTRNEGy7ov2",
+      "cmd" : "command,battery?,takeoff,land",
+      "locationId" : "location1",
+      "orientation": "279"
+    },
+    "route2" : {
+      "flightName" : "far2",
+      "lat" : "35.921399",
+      "long" :" -86.860575",
+      "uid" : "vvmEW6eWp9OjkPyelGTRNEGy7ov2",
+      "cmd" : "command,battery?,takeoff,land,takeoff,land",
+      "locationId" : "location2",
+      "orientation": "279"
+    }
+  },
+  "users" : {
+    "user1" : {
+      "uid" : "vvmEW6eWp9OjkPyelGTRNEGy7ov2",
+      "currentDeviceUId" : "device1",
+      "currentLocationId" : "location1",
+      "currentRouteId" : "route1"
+    },
+    "user2" : {
+      "uid" : "1234",
+      "currentDeviceUId" : "1234",
+      "currentLocationId" : "1234",
+      "currentRouteId" : "1234"
+    }
+  }
+ }
