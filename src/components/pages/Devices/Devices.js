@@ -48,7 +48,7 @@ class Devices extends React.Component {
   formSubmitEvent = (newDevice) => {
     const { isEditing, editId } = this.state;
     if (isEditing) {
-      deviceRequest.updateEvent(editId, newDevice)
+      deviceRequest.updateDevice(editId, newDevice)
         .then(() => {
           this.setState({ isEditing: false, editId: '-1' });
           this.getSomeData();
@@ -65,7 +65,7 @@ class Devices extends React.Component {
 
   render() {
     const { devicesArray, isEditing, editId } = this.state;
-    // const passEventToEdit = eventId => this.setState({ isEditing: true, editId: eventId });
+    const passEventToEdit = deviceId => this.setState({ isEditing: true, editId: deviceId });
     const devicesItemComponents = devicesArray.map(device => (
       <DevicesList
         device={device}
@@ -74,7 +74,7 @@ class Devices extends React.Component {
         faaSerial={device.faaSerial}
         manufacture={device.manufacture}
         deleteSingleEvent={this.deleteSingleEvent}
-        // passEventToEdit={passEventToEdit}
+        passEventToEdit={passEventToEdit}
       />
     ));
 

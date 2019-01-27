@@ -38,7 +38,6 @@ class DeviceForm extends React.Component {
     e.preventDefault();
     const { onSubmit } = this.props;
     const myDevice = { ...this.state.newDevice };
-    // myEvent.startDate = Date.parse(`${this.state.eventDate}T00:00:00`);
     myDevice.uid = authRequests.getCurrentUid();
     onSubmit(myDevice);
     this.setState({ newEvent: defaultDevice });
@@ -47,9 +46,8 @@ class DeviceForm extends React.Component {
   componentDidUpdate(prevProps) {
     const { isEditing, editId } = this.props;
     if (prevProps !== this.props && isEditing) {
-      deviceRequests.getSingleEvent(editId)
+      deviceRequests.getSingleDevice(editId)
         .then((device) => {
-          // const eventDate = moment(event.data.startDate).format('YYYY-MM-DD');
           const newDevice = {
             uid: device.data.uid,
             name: device.data.name,

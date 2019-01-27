@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import deviceShape from '../../../helpers/propz/deviceShape';
 import authRequests from '../../../helpers/data/authRequest';
 import deviceRequest from '../../../helpers/data/deviceRequest';
 import './DevicesList.scss';
@@ -7,11 +8,19 @@ import './DevicesList.scss';
 class DevicesList extends React.Component {
   static propTypes = {
     authed: PropTypes.bool,
+    passEventToEdit: PropTypes.func,
+    device: deviceShape.deviceShape,
   };
 
   state = {
     newUid: '',
     devicesArray: [],
+  }
+
+  editEvent = (e) => {
+    e.preventDefault();
+    const { passEventToEdit, device } = this.props;
+    passEventToEdit(device.id);
   }
 
   getSomeData = () => {
