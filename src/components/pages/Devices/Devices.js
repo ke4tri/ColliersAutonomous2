@@ -37,7 +37,7 @@ class Devices extends React.Component {
     this.getSomeData();
   }
 
-  deleteSingleEvent = (deviceId) => {
+  deleteSingleDevice = (deviceId) => {
     deviceRequest.deleteDevice(deviceId)
       .then(() => {
         this.getSomeData();
@@ -73,7 +73,7 @@ class Devices extends React.Component {
         name={device.name}
         faaSerial={device.faaSerial}
         manufacture={device.manufacture}
-        deleteSingleEvent={this.deleteSingleEvent}
+        deleteSingleDevice={this.deleteSingleDevice}
         passEventToEdit={passEventToEdit}
       />
     ));
