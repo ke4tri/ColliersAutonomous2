@@ -109,7 +109,7 @@ class DeviceForm extends React.Component {
               onChange={this.manufactureChange}
             />
           </div>
-          <button className="btn btn-danger">Save Event</button>
+          <button className="btn btn-danger">Save</button>
         </form>
       </div>
     );

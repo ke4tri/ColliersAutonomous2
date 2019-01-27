@@ -9,6 +9,7 @@ class DevicesList extends React.Component {
   static propTypes = {
     authed: PropTypes.bool,
     passEventToEdit: PropTypes.func,
+    deleteSingleDevice: PropTypes.func,
     device: deviceShape.deviceShape,
   };
 
@@ -17,10 +18,16 @@ class DevicesList extends React.Component {
     devicesArray: [],
   }
 
-  editEvent = (e) => {
+  editDevice = (e) => {
     e.preventDefault();
     const { passEventToEdit, device } = this.props;
     passEventToEdit(device.id);
+  }
+
+  deleteDevice = (e) => {
+    e.preventDefault();
+    const { deleteSingleDevice, device } = this.props;
+    deleteSingleDevice(device.id);
   }
 
   getSomeData = () => {
@@ -47,10 +54,10 @@ class DevicesList extends React.Component {
       if (device.uid === uid) {
         return (
           <div className="col-2">
-            <button className="btn btn-default" onClick={this.editEvent}>
+            <button className="btn btn-default" onClick={this.editDevice}>
               <i className="fas fa-pencil-alt"></i>
             </button>
-            <button className="btn btn-default" onClick={this.deleteEvent}>
+            <button className="btn btn-default" onClick={this.deleteDevice}>
               <i className="fas fa-trash-alt"></i>
             </button>
             <button className="btn btn-default" onClick={this.deleteEvent}>
