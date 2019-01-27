@@ -3,30 +3,33 @@
     "device1" : {
       "name" : "Tello",
       "faaSerial" : "None",
-      "uid" : "vvmEW6eWp9OjkPyelGTRNEGy7ov2",
-      "manufacture" : "IBM"
+      "uid" : "Dn7eJcqxX5asjVy2Z7SF3xUEMxe2",
+      "manufacture" : "IBM",
+      "type" : "Drone"
     },
     "device2" : {
       "name" : "Rolling Spider",
       "faaSerial" : "None",
-      "uid" : "vvmEW6eWp9OjkPyelGTRNEGy7ov2",
-      "manufacture" : "Parrot"
+      "uid" : "Dn7eJcqxX5asjVy2Z7SF3xUEMxe2",
+      "manufacture" : "Parrot",
+      "type" : "Drone"
     },
     "device3" : {
       "name" : "Home Brew",
       "faaSerial" : "x2fi334",
       "uid" : "2535689203",
-      "manufacture" : "None"
+      "manufacture" : "None",
+      "type" : "Rover"
     }
   },
   "locations" : {
     "location1" : {
       "name" : "Park",
-      "uid" : "vvmEW6eWp9OjkPyelGTRNEGy7ov2"
+      "uid" : "Dn7eJcqxX5asjVy2Z7SF3xUEMxe2"
     },
     "location2" : {
       "name" : "Park",
-      "uid" : "vvmEW6eWp9OjkPyelGTRNEGy7ov2"
+      "uid" : "Dn7eJcqxX5asjVy2Z7SF3xUEMxe2"
     }
   },
   "routes" : {
@@ -34,7 +37,7 @@
       "flightName" : "far",
       "lat" : "35.921399",
       "long" :" -86.860575",
-      "uid" : "vvmEW6eWp9OjkPyelGTRNEGy7ov2",
+      "uid" : "Dn7eJcqxX5asjVy2Z7SF3xUEMxe2",
       "cmd" : "command,battery?,takeoff,land",
       "locationId" : "location1",
       "orientation": "279"
@@ -43,7 +46,7 @@
       "flightName" : "far2",
       "lat" : "35.921399",
       "long" :" -86.860575",
-      "uid" : "vvmEW6eWp9OjkPyelGTRNEGy7ov2",
+      "uid" : "Dn7eJcqxX5asjVy2Z7SF3xUEMxe2",
       "cmd" : "command,battery?,takeoff,land,takeoff,land",
       "locationId" : "location2",
       "orientation": "279"
@@ -51,7 +54,7 @@
   },
   "users" : {
     "user1" : {
-      "uid" : "vvmEW6eWp9OjkPyelGTRNEGy7ov2",
+      "uid" : "Dn7eJcqxX5asjVy2Z7SF3xUEMxe2",
       "currentDeviceUId" : "device1",
       "currentLocationId" : "location1",
       "currentRouteId" : "route1"

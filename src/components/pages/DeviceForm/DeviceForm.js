@@ -23,9 +23,9 @@ class DeviceForm extends React.Component {
 
   formFieldStringState = (name, e) => {
     e.preventDefault();
-    const tempDevice = { ...this.state.newEvent };
+    const tempDevice = { ...this.state.newDevice };
     tempDevice[name] = e.target.value;
-    this.setState({ newEvent: tempDevice });
+    this.setState({ newDevice: tempDevice });
   }
 
   nameChange = e => this.formFieldStringState('name', e);

@@ -57,6 +57,7 @@ class DevicesList extends React.Component {
         <div className="col-7">
           <h4>Device name: {device.name}</h4>
           <p>FAA Serial #: {device.faaSerial}</p>
+          <p>Device Type: {device.type}</p>
           <p>Manufacture: {device.manufacture}</p>
         </div>
         <div className="col-3">
