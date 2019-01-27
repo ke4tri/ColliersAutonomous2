@@ -4,6 +4,7 @@ import authRequests from '../../../helpers/data/authRequest';
 import deviceRequest from '../../../helpers/data/deviceRequest';
 import DevicesList from '../DevicesLists/DevicesList';
 import DeviceForm from '../DeviceForm/DeviceForm';
+import DeviceDisplay from '../DeviceDisplay/DeviceDisplay';
 
 
 import './Devices.scss';
@@ -18,6 +19,13 @@ class Devices extends React.Component {
     devicesArray: [],
     isEditing: false,
     editId: '-1',
+    selectedDeviceId: -1,
+  }
+
+  listingSelectDevice = (id) => {
+    this.setState({
+      selectedDeviceId: id,
+    });
   }
 
   getSomeData = () => {
@@ -75,6 +83,7 @@ class Devices extends React.Component {
         manufacture={device.manufacture}
         deleteSingleDevice={this.deleteSingleDevice}
         passEventToEdit={passEventToEdit}
+        onListingSelection={this.listingSelectDevice}
       />
     ));
 
@@ -85,6 +94,10 @@ class Devices extends React.Component {
           <div className="col">
             <h3>Your Devices</h3>
             <ul>{ devicesItemComponents }</ul>
+          </div>
+          <div className="col">
+            <DeviceDisplay
+            />
           </div>
           <div className="col">
             <DeviceForm
