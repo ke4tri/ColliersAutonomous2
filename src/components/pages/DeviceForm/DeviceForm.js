@@ -8,6 +8,7 @@ const defaultDevice = {
   name: '',
   faaSerial: '',
   manufacture: '',
+  type: '',
 };
 
 class DeviceForm extends React.Component {
@@ -34,6 +35,9 @@ class DeviceForm extends React.Component {
 
   manufactureChange = e => this.formFieldStringState('manufacture', e);
 
+
+  typeChange = e => this.formFieldStringState('type', e);
+  
   formSubmit = (e) => {
     e.preventDefault();
     const { onSubmit } = this.props;
@@ -53,6 +57,7 @@ class DeviceForm extends React.Component {
             name: device.data.name,
             faaSerial: device.data.faaSerial,
             manufacture: device.data.manufacture,
+            type: device.data.type,
           };
           this.setState({ newDevice });
         })
@@ -107,6 +112,18 @@ class DeviceForm extends React.Component {
               placeholder="Manufacture Name"
               value={newDevice.manufacture}
               onChange={this.manufactureChange}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="type"></label>
+            <input
+              type="text"
+              className="form-control"
+              id="type"
+              aria-describedby="locationHelp"
+              placeholder="Device Type"
+              value={newDevice.type}
+              onChange={this.typeChange}
             />
           </div>
           <button className="btn btn-danger">Save</button>
