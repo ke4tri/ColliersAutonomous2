@@ -11,11 +11,16 @@ class DevicesList extends React.Component {
     passEventToEdit: PropTypes.func,
     deleteSingleDevice: PropTypes.func,
     device: deviceShape.deviceShape,
+    onListingSelection: PropTypes.func,
   };
 
   state = {
     newUid: '',
     devicesArray: [],
+  }
+
+  selectDevice = (e) => {
+    e.preventDefault();
   }
 
   editDevice = (e) => {
@@ -28,6 +33,12 @@ class DevicesList extends React.Component {
     e.preventDefault();
     const { deleteSingleDevice, device } = this.props;
     deleteSingleDevice(device.id);
+  }
+
+  listingClick = (e) => {
+    e.stopPropagation();
+    const { device, onListingSelection } = this.props;
+    onListingSelection(device.id);
   }
 
   getSomeData = () => {
@@ -60,7 +71,7 @@ class DevicesList extends React.Component {
             <button className="btn btn-default" onClick={this.deleteDevice}>
               <i className="fas fa-trash-alt"></i>
             </button>
-            <button className="btn btn-default" onClick={this.deleteEvent}>
+            <button className="btn btn-default" onClick={this.listingClick}>
               SELECT
             </button>
           </div>
@@ -72,9 +83,9 @@ class DevicesList extends React.Component {
       <li className="event-item text-center">
         <div className="col-7">
           <h4>Device name: {device.name}</h4>
-          <p>FAA Serial #: {device.faaSerial}</p>
           <p>Device Type: {device.type}</p>
-          <p>Manufacture: {device.manufacture}</p>
+          {/* <p>FAA Serial #: {device.faaSerial}</p>
+          <p>Manufacture: {device.manufacture}</p> */}
         </div>
         <div className="col-3">
         </div>
