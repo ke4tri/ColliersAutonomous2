@@ -44,11 +44,9 @@ class DevicesList extends React.Component {
   getSomeData = () => {
     const newUid = authRequests.getCurrentUid();
     this.setState({ newUid });
-    console.log(this.state.newUid);
     deviceRequest.getDevices(newUid)
       .then((devicesArray) => {
         this.setState({ devicesArray });
-        console.log('State at start', this.state.devicesArray);
       })
       .catch(err => console.error('error with getWeather', err));
   }
@@ -64,7 +62,7 @@ class DevicesList extends React.Component {
     const makeButtons = () => {
       if (device.uid === uid) {
         return (
-          <div className="alert alert-secondary" role="alert">
+          <div className="d-flex row" role="alert">
             <button className="btn btn-default" onClick={this.editDevice}>
               <i className="fas fa-pencil-alt"></i>
             </button>
@@ -81,11 +79,11 @@ class DevicesList extends React.Component {
     };
     return (
       <li className="event-item text-center" onClick={this.listingClick}>
-        <div className="col-7">
+        <div className="col-1">
           <h4> {device.name}</h4>
           <p> {device.type}</p>
         </div>
-        <div className="col-3">
+        <div className="row">
         </div>
         { makeButtons() }
       </li>
