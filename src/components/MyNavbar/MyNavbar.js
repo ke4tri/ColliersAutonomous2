@@ -32,7 +32,7 @@ class MyNavbar extends React.Component {
     e.preventDefault();
     authRequests.authenticate().then(() => {
       // this is going to need to change to page with button to take to launch
-      this.props.history.push('/devices');
+      // this.props.history.push('/devices');
     }).catch(err => console.error('error in auth', err));
   }
 

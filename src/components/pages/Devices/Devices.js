@@ -12,6 +12,7 @@ import './Devices.scss';
 class Devices extends React.Component {
   static propTypes = {
     authed: PropTypes.bool,
+    // device: PropTypes.func,
   };
 
   state = {
@@ -31,11 +32,9 @@ class Devices extends React.Component {
   getSomeData = () => {
     const newUid = authRequests.getCurrentUid();
     this.setState({ newUid });
-    console.log(this.state.newUid);
     deviceRequest.getDevices(newUid)
       .then((devicesArray) => {
         this.setState({ devicesArray });
-        console.log('State at start', this.state.devicesArray);
       })
       .catch(err => console.error('error with getWeather', err));
   }
@@ -93,19 +92,18 @@ class Devices extends React.Component {
     ));
 
     return (
-      <div className="Events text-center col">
-        <h1>Devices</h1>
+      <div className="text-center col">
+        <h1>Your Devices</h1>
         <div className="row">
-          <div className="col mr-5">
-            <h3>Your Devices</h3>
+          <div className="row mr-1">
             <ul>{ devicesItemComponents }</ul>
           </div>
-          <div className="col ml-5">
+          <div className="col mr-5">
             <DeviceDisplay
             device={selectedListing}
             />
           </div>
-          <div className="col ml-5">
+          <div className="col">
             <DeviceForm
               onSubmit={this.formSubmitEvent}
               isEditing={isEditing}
