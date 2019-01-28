@@ -72,7 +72,12 @@ class Devices extends React.Component {
   }
 
   render() {
+    const {
+      selectedDeviceId,
+    } = this.state;
+
     const { devicesArray, isEditing, editId } = this.state;
+    const selectedListing = devicesArray.find(device => device.id === selectedDeviceId) || { nope: 'nope' };
     const passEventToEdit = deviceId => this.setState({ isEditing: true, editId: deviceId });
     const devicesItemComponents = devicesArray.map(device => (
       <DevicesList
@@ -97,6 +102,7 @@ class Devices extends React.Component {
           </div>
           <div className="col">
             <DeviceDisplay
+            device={selectedListing}
             />
           </div>
           <div className="col">
