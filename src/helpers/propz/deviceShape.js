@@ -5,6 +5,7 @@ const deviceShape = PropTypes.shape({
   name: PropTypes.string.isRequired,
   faaSerial: PropTypes.string.isRequired,
   manufacture: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
 });
 
 export default {

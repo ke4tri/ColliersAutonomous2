@@ -64,14 +64,14 @@ class DevicesList extends React.Component {
     const makeButtons = () => {
       if (device.uid === uid) {
         return (
-          <div className="col-2">
+          <div className="alert alert-secondary" role="alert">
             <button className="btn btn-default" onClick={this.editDevice}>
               <i className="fas fa-pencil-alt"></i>
             </button>
             <button className="btn btn-default" onClick={this.deleteDevice}>
               <i className="fas fa-trash-alt"></i>
             </button>
-            <button className="btn btn-default" onClick={this.listingClick}>
+            <button className="btn btn-default" >
               SELECT
             </button>
           </div>
@@ -80,12 +80,10 @@ class DevicesList extends React.Component {
       return <div className="col-2"></div>;
     };
     return (
-      <li className="event-item text-center">
+      <li className="event-item text-center" onClick={this.listingClick}>
         <div className="col-7">
-          <h4>Device name: {device.name}</h4>
-          <p>Device Type: {device.type}</p>
-          {/* <p>FAA Serial #: {device.faaSerial}</p>
-          <p>Manufacture: {device.manufacture}</p> */}
+          <h4> {device.name}</h4>
+          <p> {device.type}</p>
         </div>
         <div className="col-3">
         </div>
