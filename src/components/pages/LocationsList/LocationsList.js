@@ -36,7 +36,7 @@ class LocationsList extends React.Component {
             <button className="btn btn-default" onClick={this.deleteDevice}>
               <i className="fas fa-trash-alt"></i>
             </button>
-            <button className="btn btn-default" >
+            <button className="btn btn-default" onClick={this.listingClick}>
               SELECT
             </button>
           </div>
@@ -44,7 +44,7 @@ class LocationsList extends React.Component {
       }
     }
     return (
-      <li className="event-item text-center" onClick={this.listingClick}>
+      <li className="event-item text-center">
       <div className="col-1">
         <h4> {location.name}</h4>
       </div>
