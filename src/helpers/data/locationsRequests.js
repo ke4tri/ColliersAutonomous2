@@ -23,7 +23,7 @@ const getLocations = uid => new Promise((resolve, reject) => {
 
 const deleteLocations = locationId => axios.delete(`${firebaseUrl}/locations/${locationId}.json`);
 
-const postRequest = location => axios.post(`${firebaseUrl}/devices.json`, location);
+const postRequest = location => axios.post(`${firebaseUrl}/locations.json`, location);
 
 const getSingleLocation = locationId => axios.get(`${firebaseUrl}/locations/${locationId}.json`);
 

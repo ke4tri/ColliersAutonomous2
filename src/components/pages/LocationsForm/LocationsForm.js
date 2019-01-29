@@ -42,7 +42,7 @@ class LocationsForm extends React.Component {
   componentDidUpdate(prevProps) {
     const { isEditing, editId } = this.props;
     if (prevProps !== this.props && isEditing) {
-      locationsRequests.getSingleDevice(editId)
+      locationsRequests.getSingleLocation(editId)
         .then((device) => {
           const newLocation = {
             uid: device.data.uid,
@@ -60,7 +60,7 @@ class LocationsForm extends React.Component {
     return (
       <div className="event-form col">
       <form onSubmit={this.formSubmit}>
-          <div className="form-group">
+          <div className="form-group ">
             <label htmlFor="event"></label>
             <input
               type="text"
