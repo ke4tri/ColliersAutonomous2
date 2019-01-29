@@ -9,10 +9,21 @@ class LocationsList extends React.Component {
   static propTypes = {
     authed: PropTypes.bool,
     location: locationShape.locationShape,
-    // passEventToEdit: PropTypes.func,
-    // deleteSingleLocation: PropTypes.func,
-    // onListingSelection: PropTypes.func,
+    deleteSingleLocation: PropTypes.func,
+    onListingSelection: PropTypes.func,
   };
+
+  deleteDevice = (e) => {
+    e.preventDefault();
+    const { deleteSingleLocation, location } = this.props;
+    deleteSingleLocation(location.id);
+  }
+
+  listingClick = (e) => {
+    e.stopPropagation();
+    const { location, onListingSelection } = this.props;
+    onListingSelection(location.id);
+  }
 
   render() {
     const { location } = this.props;

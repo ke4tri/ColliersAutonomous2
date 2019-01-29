@@ -13,6 +13,12 @@ class Locations extends React.Component {
     selectedLocationId: -1,
   }
 
+  listingSelectLocation = (id) => {
+    this.setState({
+      selectedLocationId: id,
+    });
+  }
+
   getSomeLocationsData = () => {
     const newUid = authRequests.getCurrentUid();
     this.setState({ newUid });
@@ -27,8 +33,8 @@ class Locations extends React.Component {
     this.getSomeLocationsData();
   }
 
-  deleteSingleLocation = (locationId) => {
-    locationsRequest.deleteDevice(locationId)
+  deleteSingleLocation2 = (locationId) => {
+    locationsRequest.deleteLocations(locationId)
       .then(() => {
         this.getSomeLocationsData();
       })
@@ -66,9 +72,8 @@ class Locations extends React.Component {
         location={location}
         key={location.id}
         name={location.name}
-        // deleteSingleDevice={this.deleteSingleDevice}
-        // passEventToEdit={passEventToEdit}
-        // onListingSelection={this.listingSelectDevice}
+        deleteSingleLocation={this.deleteSingleLocation2}
+        onListingSelection={this.listingSelectLocation}
       />
     ));
     return (
