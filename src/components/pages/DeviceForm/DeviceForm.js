@@ -35,7 +35,6 @@ class DeviceForm extends React.Component {
 
   manufactureChange = e => this.formFieldStringState('manufacture', e);
 
-
   typeChange = e => this.formFieldStringState('type', e);
   
   formSubmit = (e) => {

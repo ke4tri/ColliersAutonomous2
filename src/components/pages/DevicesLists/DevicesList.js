@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import deviceShape from '../../../helpers/propz/deviceShape';
 import authRequests from '../../../helpers/data/authRequest';
-import deviceRequest from '../../../helpers/data/deviceRequest';
+// import deviceRequest from '../../../helpers/data/deviceRequest';
 import './DevicesList.scss';
 
 class DevicesList extends React.Component {
@@ -39,20 +39,6 @@ class DevicesList extends React.Component {
     e.stopPropagation();
     const { device, onListingSelection } = this.props;
     onListingSelection(device.id);
-  }
-
-  getSomeData = () => {
-    const newUid = authRequests.getCurrentUid();
-    this.setState({ newUid });
-    deviceRequest.getDevices(newUid)
-      .then((devicesArray) => {
-        this.setState({ devicesArray });
-      })
-      .catch(err => console.error('error with getWeather', err));
-  }
-
-  componentWillMount() {
-    this.getSomeData();
   }
 
   render() {

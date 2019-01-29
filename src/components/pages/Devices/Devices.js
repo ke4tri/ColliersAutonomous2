@@ -36,7 +36,7 @@ class Devices extends React.Component {
       .then((devicesArray) => {
         this.setState({ devicesArray });
       })
-      .catch(err => console.error('error with getWeather', err));
+      .catch(err => console.error('error with getLocations', err));
   }
 
   // change this to componentDidMount()?
@@ -71,11 +71,16 @@ class Devices extends React.Component {
   }
 
   render() {
+    // const {
+    //   selectedDeviceId,
+    // } = this.state;
+
     const {
+      devicesArray,
+      isEditing,
+      editId,
       selectedDeviceId,
     } = this.state;
-
-    const { devicesArray, isEditing, editId } = this.state;
     const selectedListing = devicesArray.find(device => device.id === selectedDeviceId) || { nope: 'nope' };
     const passEventToEdit = deviceId => this.setState({ isEditing: true, editId: deviceId });
     const devicesItemComponents = devicesArray.map(device => (
