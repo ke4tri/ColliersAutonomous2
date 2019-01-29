@@ -1,10 +1,5 @@
 import React from 'react';
 import deviceProz from '../../../helpers/propz/deviceShape';
-// import PropTypes from 'prop-types';
-// import listingShape from '../../helpers/propz/listingShape';
-
-// import ListingItem from '../ListingItem/ListingItem';
-
 import './DeviceDisplay.scss';
 
 class DeviceDisplay extends React.Component {
