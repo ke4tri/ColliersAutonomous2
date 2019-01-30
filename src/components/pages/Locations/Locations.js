@@ -60,7 +60,7 @@ class Locations extends React.Component {
 
   changeView = (locationId) => {
     console.log(locationId);
-    this.props.history.push(`/locations/${locationId}`);
+    this.props.history.push(`/locations/${locationId}/routes`);
     this.setState({ selectedLocationId: locationId });
   }
 
