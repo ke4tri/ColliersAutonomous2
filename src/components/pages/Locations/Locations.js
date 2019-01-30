@@ -1,5 +1,4 @@
 import React from 'react';
-// import LocationsDisplay from '../LocationsDisplay/LocationsDisplay';
 import LocationsList from '../LocationsList/LocationsList';
 import authRequests from '../../../helpers/data/authRequest';
 import locationsRequest from '../../../helpers/data/locationsRequests';
@@ -59,14 +58,18 @@ class Locations extends React.Component {
     }
   }
 
+  changeView = (locationId) => {
+    console.log(locationId);
+    this.props.history.push(`/locations/${locationId}`);
+    this.setState({ selectedLocationId: locationId });
+  }
+
   render() {
     const {
       locationsArray,
       isEditing,
       editId,
     } = this.state;
-    // const { locationsArray,selectedLocationId } = this.state;
-    // const selectedLocation = locationsArray.find(location => location.id === selectedLocationId) || { nope: 'nope' };
     const locationsItemComponents = locationsArray.map(location => (
       <LocationsList
         location={location}
@@ -74,6 +77,8 @@ class Locations extends React.Component {
         name={location.name}
         deleteSingleLocation={this.deleteSingleLocation2}
         onListingSelection={this.listingSelectLocation}
+
+        changeView={this.changeView}
       />
     ));
     return (

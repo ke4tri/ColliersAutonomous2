@@ -10,8 +10,8 @@ import Auth from '../components/pages/Auth/Auth';
 import Devices from '../components/pages/Devices/Devices';
 import Launch from '../components/pages/Launch/Launch';
 import Locations from '../components/pages/Locations/Locations';
-import RoutePath from '../components/pages/RoutePath/RoutePath';
-import RouteAdd from '../components/pages/RouteAdd/RouteAdd';
+// import RoutePath from '../components/pages/RoutePath/RoutePath';
+// import RouteAdd from '../components/pages/RouteAdd/RouteAdd';
 import RouteEdit from '../components/pages/RouteEdit/RouteEdit';
 import About from '../components/pages/About/About';
 import connection from '../helpers/data/connection';
@@ -88,10 +88,10 @@ class App extends React.Component {
                   {/* <PublicRoute path='/' exact component={Auth} authed={this.state.authed} /> */}
                   <PrivateRoute path='/' exact component={Devices} authed={this.state.authed} />
                   <PrivateRoute path='/devices' component={Devices} authed={this.state.authed} />
-                  <PrivateRoute path='/locations/:id' component={RoutePath} authed={this.state.authed} />
+                  <PrivateRoute path='/locations/:id' component={RouteEdit} authed={this.state.authed} />
                   <PrivateRoute path='/locations' component={Locations} authed={this.state.authed} />
-                  <PrivateRoute path='/route/:id/edit'component={RouteEdit} authed={this.state.authed} />
-                  <PrivateRoute path='/route/add' component={RouteAdd} authed={this.state.authed} />
+                  {/* <PrivateRoute path='/route/:id/edit'component={RouteEdit} authed={this.state.authed} /> */}
+                  {/* <PrivateRoute path='/route/add' component={RouteAdd} authed={this.state.authed} /> */}
                   <PrivateRoute path='/launch' component={Launch} authed={this.state.authed} />
                   <PublicRoute path='/about' exact component={About} authed={this.state.authed} />
                   <PrivateRoute path='/about2' exact component={About} authed={this.state.authed} />
