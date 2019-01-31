@@ -27,7 +27,13 @@ state = {
   }
 
   changeView2 = () => {
-    this.props.history.push('/route/:id/edit/');
+    const locationId = this.props.match.params.id;
+    this.props.history.push(`/route/${locationId}/edit/`);
+    // this.setState({ selectedLocationId: locationId });
+  }
+
+  changeViewLaunch = () => {
+    this.props.history.push('/launch');
     // this.setState({ selectedLocationId: locationId });
   }
 
@@ -110,7 +116,7 @@ state = {
             />
           </ul>
           </div>
-          <button className="btn btn-outline-light" onClick={this.changeView2}>Launch Console</button>
+          <button className="btn btn-outline-light" onClick={this.changeViewLaunch}>Launch Console</button>
         </div>
       </div>
     );
