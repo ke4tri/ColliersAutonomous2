@@ -49,13 +49,13 @@ class DevicesList extends React.Component {
       if (device.uid === uid) {
         return (
           <div className="d-flex row" role="alert">
-            <button className="btn btn-default" onClick={this.editDevice}>
+            <button className="btn btn-outline-light" onClick={this.editDevice}>
               <i className="fas fa-pencil-alt"></i>
             </button>
-            <button className="btn btn-default" onClick={this.deleteDevice}>
+            <button className="btn btn-outline-light" onClick={this.deleteDevice}>
               <i className="fas fa-trash-alt"></i>
             </button>
-            <button className="btn btn-default" >
+            <button className="btn btn-outline-light" >
               SELECT
             </button>
           </div>

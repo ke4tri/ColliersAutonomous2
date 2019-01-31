@@ -72,7 +72,7 @@ class LocationsForm extends React.Component {
               onChange={this.nameChange}
             />
           </div>
-          <button className="btn btn-danger">Save</button>
+          <button className="btn btn-outline-light">Save</button>
         </form>
       </div>
     );

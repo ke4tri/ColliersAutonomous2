@@ -34,10 +34,10 @@ class LocationsList extends React.Component {
       if (location.uid === uid) {
         return (
           <div className="d-flex row" role="alert">
-            <button className="btn btn-default" onClick={this.deleteDevice}>
+            <button className="btn btn-outline-dark m-5" onClick={this.deleteDevice}>
               <i className="fas fa-trash-alt"></i>
             </button>
-            <button className="btn btn-default" onClick={this.listingClick}>
+            <button className="btn btn-outline-dark m-5" onClick={this.listingClick}>
               SELECT
             </button>
           </div>

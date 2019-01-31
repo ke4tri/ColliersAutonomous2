@@ -4,8 +4,25 @@ import apiKeys from '../apiKeys';
 const firebaseUrl = apiKeys.firebaseConfig.databaseURL;
 
 const getRoutes = locationId => new Promise((resolve, reject) => {
-  console.log(locationId);
   axios.get(`${firebaseUrl}/routes.json?orderBy="locationId"&equalTo="${locationId}"`)
+    .then((result) => {
+      const routesObject = result.data;
+      const routesArray = [];
+      if (routesObject != null) {
+        Object.keys(routesObject).forEach((routesId) => {
+          routesObject[routesId].id = routesId;
+          routesArray.push(routesObject[routesId]);
+        });
+      }
+      resolve(routesArray);
+    })
+    .catch((error) => {
+      reject(error);
+    });
+});
+
+const getRoutesUid = uid => new Promise((resolve, reject) => {
+  axios.get(`${firebaseUrl}/routes.json?orderBy="uid"&equalTo="${uid}"`)
     .then((result) => {
       const routesObject = result.data;
       const routesArray = [];
@@ -35,6 +52,7 @@ const updateRoute = (routeId, route) => axios.put(`${firebaseUrl}/routes/${route
 
 export default {
   getRoutes,
+  getRoutesUid,
   deleteRoutes,
   postRequest,
   getSingleRoute,

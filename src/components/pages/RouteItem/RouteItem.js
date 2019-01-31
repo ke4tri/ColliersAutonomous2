@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import authRequests from '../../../helpers/data/authRequest';
-import locationShape from '../../../helpers/propz/locationShape';
+import routeShape from '../../../helpers/propz/routeShape';
 import './RouteItem.scss';
 
 class RouteItem extends React.Component {
@@ -9,11 +8,15 @@ class RouteItem extends React.Component {
   static propTypes = {
     locationId: PropTypes.string,
     getSomeData2: PropTypes.func,
+    route: routeShape,
+    onListingSelection: PropTypes.func,
   };
 
-  //  consoleThis = () => {
-  //    console.log(this.props.locationId);
-  //  }
+  listingClick = (e) => {
+    e.stopPropagation();
+    const { route, onListingSelection } = this.props;
+    onListingSelection(route.id);
+  }
 
   getLocationRoutes = () => {
     this.props.getSomeData2(this.props.locationId);
@@ -32,15 +35,9 @@ class RouteItem extends React.Component {
       </div>
       <div className="row">
       </div>
-      <div className="d-flex row" role="alert">
-          <button className="btn btn-default" onClick={this.editDevice}>
-            <i className="fas fa-pencil-alt"></i>
-          </button>
-          <button className="btn btn-default" onClick={this.deleteDevice}>
+      <div className="d-flex" role="alert">
+          <button className="btn btn-outline-lightl m-5 px-5" onClick={this.deleteDevice}>
             <i className="fas fa-trash-alt"></i>
-          </button>
-          <button className="btn btn-default" >
-            SELECT
           </button>
         </div>
       </li>

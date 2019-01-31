@@ -72,10 +72,6 @@ class Devices extends React.Component {
   }
 
   render() {
-    // const {
-    //   selectedDeviceId,
-    // } = this.state;
-
     const {
       devicesArray,
       isEditing,
