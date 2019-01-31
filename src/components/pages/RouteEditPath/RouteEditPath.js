@@ -1,17 +1,126 @@
 import React from 'react';
+import routesRequest from '../../../helpers/data/routesRequest';
+import authRequests from '../../../helpers/data/authRequest';
 import './RouteEditPath.scss';
 
+const defaultRoute = {
+  uid: '',
+  flightName: '',
+  latLong: '',
+  orientation: '',
+  cmd: '',
+  locationId: '',
+};
+
 class RouteEditPath extends React.Component {
-  changeView2 = () => {
-    this.props.history.push('/route/:id/edit/');
+  // changeView2 = () => {
+  //   this.props.history.push('/route/:id/edit/');
+  //   this.setState({ selectedLocationId: locationId });
+  // }
+
+  state = {
+    newRoute: defaultRoute,
+    newEvent: '',
+    isEditing: false,
+    editId: '-1',
+  };
+
+  changeView = () => {
+    this.props.history.push(`/locations/${this.props.match.params.id}/routes`);
     // this.setState({ selectedLocationId: locationId });
   }
 
+  // bind = () => {
+
+  // } ;
+
+  formFieldStringState = (name, e) => {
+    e.preventDefault();
+    const tempRoute = { ...this.state.newRoute };
+    tempRoute[name] = e.target.value;
+    this.setState({ newRoute: tempRoute });
+  };
+
+  formFieldLocationState = (name, id) => {
+    const tempRoute = { ...this.state.newRoute };
+    tempRoute[name] = id;
+    this.setState({ newRoute: tempRoute });
+  }
+
+  flightNameChange = e => this.formFieldStringState('flightName', e);
+
+  cmdChange = e => this.formFieldStringState('cmd', e);
+
+  latLongChange = e => this.formFieldStringState('latLong', e);
+
+  orientationChange = e => this.formFieldStringState('orientation', e);
+
+  locationIdChange = e => this.formFieldStringState('locationId', e);
+
+
+  formSubmitEvent = (newRoute) => {
+    const { isEditing, editId } = this.state;
+    if (isEditing) {
+      routesRequest.updateRoute(editId, newRoute)
+        .then(() => {
+          this.setState({ isEditing: false, editId: '-1' });
+          // this.getSomeData();
+        })
+        .catch(err => console.error('error with devices post', err));
+    } else {
+      routesRequest.postRequest(newRoute)
+        .then(() => {
+          this.getSomeData();
+        })
+        .catch(err => console.error('error with devices post', err));
+    }
+    this.changeView();
+  }
+
+  formSubmit = (e) => {
+    e.preventDefault();
+    const myRoute = { ...this.state.newRoute };
+    myRoute.uid = authRequests.getCurrentUid();
+    // onSubmit(myDevice);
+    this.formSubmitEvent(myRoute);
+    this.setState({ newEvent: defaultRoute });
+  }
+
+  componentDidUpdate() {
+    const { isEditing, editId } = this.state;
+    if (isEditing) {
+      routesRequest.getSingleRoute(editId)
+        .then((route) => {
+          // const locationId = this.props.match.params.id;
+          const newDevice = {
+            uid: route.data.uid,
+            name: route.data.flightName,
+            faaSerial: route.data.faaSerial,
+            manufacture: route.data.manufacture,
+            type: route.data.type,
+            locationId: route.data.locationId,
+          };
+          this.setState({ newDevice });
+        })
+        .catch(err => console.error('error with getSingleEvent', err));
+    }
+  }
+
+
   render() {
+    const { newRoute, isEditing } = this.state;
+    const locationId = this.props.match.params.id;
+    const title = () => {
+      if (isEditing) {
+        return <h2>Edit Route</h2>;
+      }
+      return <h2>Add Route</h2>;
+    };
     return (
+
       <div className="everythingIn mx-auto">
         <div className='Home mx-auto'>
-          <h2>RouteEditPath</h2>
+          {title()}
           <div className="wrapButton">
             {/* <button class="btn btn-primary" onClick={this.changeView2}>Button</button> */}
             <div className="btn-group d-flex justify-content-center">
@@ -38,11 +147,11 @@ class RouteEditPath extends React.Component {
             <input
               type="text"
               className="form-control"
-              id="routeName"
+              id="flightName"
               aria-describedby="eventHelp"
               placeholder="Route Name"
-              // value={route.name}
-              onChange={this.routeNameChange}
+              value={newRoute.flightName}
+              onChange={this.flightNameChange}
             />
           </div>
           <div className="input-group m-1">
@@ -53,7 +162,7 @@ class RouteEditPath extends React.Component {
               id="cmd"
               aria-describedby="eventHelp"
               placeholder="Commands"
-              // value={route.cmd}
+              value={newRoute.cmd}
               onChange={this.cmdChange}
             />
           </div>
@@ -62,11 +171,11 @@ class RouteEditPath extends React.Component {
             <input
               type="text"
               className="form-control"
-              id="latLog"
+              id="latLong"
               aria-describedby="eventHelp"
-              placeholder="35.92.1399, -86.860575"
-              // value={newLocation.name}
-              onChange={this.latLogChange}
+              placeholder="99.99.9999, -99.999999"
+              value={newRoute.latLong}
+              onChange={this.latLongChange}
             />
           </div>
           <div className="input-group m-1">
@@ -77,8 +186,20 @@ class RouteEditPath extends React.Component {
               id="orientation"
               aria-describedby="eventHelp"
               placeholder="Orientation 0-259"
-              // value={newLocation.name}
+              value={newRoute.orientation}
               onChange={this.orientationChange}
+            />
+          </div>
+          <div className="input-group m-1">
+            <label htmlFor="event"></label>
+            <input
+              type="text"
+              className="form-control"
+              id="locationId"
+              aria-describedby="eventHelp"
+              placeholder="locationId"
+              value={locationId}
+              onClick={this.locationIdChange}
             />
           </div>
           <button className="btn btn-danger">Save</button>
