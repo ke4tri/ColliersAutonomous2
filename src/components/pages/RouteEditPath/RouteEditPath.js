@@ -12,7 +12,7 @@ class RouteEditPath extends React.Component {
       <div className="everythingIn mx-auto">
         <div className='Home mx-auto'>
           <h2>RouteEditPath</h2>
-          <div className="wrapButton d-flex justify-content-center">
+          <div className="wrapButton">
             {/* <button class="btn btn-primary" onClick={this.changeView2}>Button</button> */}
             <div className="btn-group d-flex justify-content-center">
               <button type="button" className="taco btn btn-outline-light m-2 p-3">TAKE OFF</button>

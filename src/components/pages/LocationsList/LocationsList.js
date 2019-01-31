@@ -43,7 +43,7 @@ class LocationsList extends React.Component {
           </div>
         );
       }
-    }
+    };
     return (
       <li className="event-item text-center">
       <div className="col-1">
