@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import authRequests from '../../../helpers/data/authRequest';
 import deviceRequest from '../../../helpers/data/deviceRequest';
 import DevicesList from '../DevicesLists/DevicesList';
+import deviceShape from '../../../helpers/propz/deviceShape';
 import DeviceForm from '../DeviceForm/DeviceForm';
 import DeviceDisplay from '../DeviceDisplay/DeviceDisplay';
 
@@ -12,7 +13,7 @@ import './Devices.scss';
 class Devices extends React.Component {
   static propTypes = {
     authed: PropTypes.bool,
-    // device: PropTypes.func,
+    device: deviceShape.deviceShape,
   };
 
   state = {

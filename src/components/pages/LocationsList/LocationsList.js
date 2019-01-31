@@ -11,6 +11,7 @@ class LocationsList extends React.Component {
     location: locationShape.locationShape,
     deleteSingleLocation: PropTypes.func,
     onListingSelection: PropTypes.func,
+    changeView: PropTypes.func,
   };
 
   deleteDevice = (e) => {
@@ -21,8 +22,8 @@ class LocationsList extends React.Component {
 
   listingClick = (e) => {
     e.stopPropagation();
-    const { location, onListingSelection } = this.props;
-    onListingSelection(location.id);
+    const { location } = this.props;
+    this.props.changeView(location.id);
   }
 
   render() {
@@ -42,7 +43,7 @@ class LocationsList extends React.Component {
           </div>
         );
       }
-    }
+    };
     return (
       <li className="event-item text-center">
       <div className="col-1">

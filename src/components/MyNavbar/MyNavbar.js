@@ -24,9 +24,9 @@ class MyNavbar extends React.Component {
     isOpen: false,
   };
 
-  changeView = () => {
-    this.props.history.push('/about');
-  }
+  // changeView = () => {
+  //   this.props.history.push('/about');
+  // }
 
   authenticateUser = (e) => {
     e.preventDefault();
@@ -59,6 +59,9 @@ class MyNavbar extends React.Component {
           </NavItem>
           <NavItem>
             <NavLink tag={RRNavLink} to='/about2'><i className="fas fa-question fa-2x"></i></NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink tag={RRNavLink} to='/:id'></NavLink>
           </NavItem>
           <NavItem>
             <NavLink onClick={logoutClickEvent}>Logout</NavLink>
