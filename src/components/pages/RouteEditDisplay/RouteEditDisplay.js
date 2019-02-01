@@ -3,9 +3,18 @@ import routeShape from '../../../helpers/propz/routeShape';
 import './RouteEditDisplay.scss';
 
 class RouteEditDisplay extends React.Component {
-  static propTypes = {
-    route: routeShape.routeShape,
-  };
+  // static propTypes = {
+  //   route: routeShape.routeShape,
+  // };
+
+  changeView2 = () => {
+    this.props.history.push(`/locations/${this.props.match.params.id}/routes`);
+    // this.setState({ selectedLocationId: locationId });
+  }
+
+  bind = () => {
+    this.changeView2();
+  }
 
   render() {
     const { route } = this.props;

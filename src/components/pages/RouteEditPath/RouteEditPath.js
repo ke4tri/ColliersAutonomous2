@@ -13,26 +13,17 @@ const defaultRoute = {
 };
 
 class RouteEditPath extends React.Component {
-  // changeView2 = () => {
-  //   this.props.history.push('/route/:id/edit/');
-  //   this.setState({ selectedLocationId: locationId });
-  // }
-
   state = {
     newRoute: defaultRoute,
     newEvent: '',
     isEditing: false,
     editId: '-1',
+    currentCommand: [],
   };
 
   changeView = () => {
     this.props.history.push(`/locations/${this.props.match.params.id}/routes`);
-    // this.setState({ selectedLocationId: locationId });
   }
-
-  // bind = () => {
-
-  // } ;
 
   formFieldStringState = (name, e) => {
     e.preventDefault();
@@ -41,21 +32,30 @@ class RouteEditPath extends React.Component {
     this.setState({ newRoute: tempRoute });
   };
 
-  formFieldLocationState = (name, id) => {
+  formFieldRouteState = (name, route) => {
     const tempRoute = { ...this.state.newRoute };
-    tempRoute[name] = id;
+    tempRoute[name] = route;
     this.setState({ newRoute: tempRoute });
   }
 
   flightNameChange = e => this.formFieldStringState('flightName', e);
 
-  cmdChange = e => this.formFieldStringState('cmd', e);
+  cmdChange2 = array => this.formFieldRouteState('cmd', array);
 
   latLongChange = e => this.formFieldStringState('latLong', e);
 
   orientationChange = e => this.formFieldStringState('orientation', e);
 
   locationIdChange = e => this.formFieldStringState('locationId', e);
+
+  cmdChange = (e) => {
+    e.preventDefault();
+    const currentCommand2 = this.state.currentCommand.slice();
+    currentCommand2.push(e.target.value);
+    this.setState({ currentCommand: currentCommand2 });
+    this.cmdChange2(this.state.currentCommand);
+    console.log(this.state.currentCommand);
+  }
 
 
   formSubmitEvent = (newRoute) => {
@@ -106,7 +106,6 @@ class RouteEditPath extends React.Component {
     }
   }
 
-
   render() {
     const { newRoute, isEditing } = this.state;
     const locationId = this.props.match.params.id;
@@ -121,24 +120,26 @@ class RouteEditPath extends React.Component {
       <div className="everythingIn mx-auto">
         <div className='Home mx-auto'>
           {title()}
+          <form onClick={this.cmdChange}>
           <div className="wrapButton">
             {/* <button class="btn btn-primary" onClick={this.changeView2}>Button</button> */}
             <div className="btn-group d-flex justify-content-center">
-              <button type="button" className="taco btn btn-outline-light m-2 p-3">TAKE OFF</button>
-              <button type="button" className="taco btn btn-outline-light m-2 p-3">UP</button>
-              <button type="button" className="taco btn btn-outline-light m-2 p-3">LAND</button>
+              <button type="button" className="taco btn btn-outline-light m-2 p-3" value="takeoff">TAKE OFF</button>
+              <button type="button" className="taco btn btn-outline-light m-2 p-3" value="up20">UP</button>
+              <button type="button" className="taco btn btn-outline-light m-2 p-3" value="land">LAND</button>
             </div>
             <div className="btn-group d-flex justify-content-center">
-              <button type="button" className="btn btn-outline-light m-2 p-3">90CW</button>
-              <button type="button" className="btn btn-outline-light m-2 p-3">PHOTO</button>
-              <button type="button" className="btn btn-outline-light m-2 p-3">90CC</button>
+              <button type="button" className="btn btn-outline-light m-2 p-3" value="90cw">90CW</button>
+              <button type="button" className="btn btn-outline-light m-2 p-3" value="photo">PHOTO</button>
+              <button type="button" className="btn btn-outline-light m-2 p-3" value="90ccw">90CCW</button>
             </div>
             <div className="btn-group d-flex justify-content-center">
-              <button type="button" className="taco2 btn btn-outline-light m-2 p-3">FORWARD</button>
-              <button type="button" className="taco2 btn btn-outline-light m-2 p-3">DOWN</button>
-              <button type="button" className="taco2 btn btn-outline-light m-2 p-3">BACK</button>
+              <button type="button" className="taco2 btn btn-outline-light m-2 p-3" value="forward20">FORWARD</button>
+              <button type="button" className="taco2 btn btn-outline-light m-2 p-3" value="down20">DOWN</button>
+              <button type="button" className="taco2 btn btn-outline-light m-2 p-3" value="back20">BACK</button>
             </div>
           </div>
+          </form>
       </div>
       <div className="event-form col">
       <form onSubmit={this.formSubmit}>

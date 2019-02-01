@@ -22,8 +22,8 @@ class LocationsList extends React.Component {
 
   listingClick = (e) => {
     e.stopPropagation();
-    const { location } = this.props;
-    this.props.changeView(location.id);
+    const { location, changeView } = this.props;
+    changeView(location.id);
   }
 
   render() {
@@ -43,6 +43,7 @@ class LocationsList extends React.Component {
           </div>
         );
       }
+      return '';
     };
     return (
       <li className="event-item text-center">

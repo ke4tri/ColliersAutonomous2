@@ -1,15 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import authRequests from '../../../helpers/data/authRequest';
 import routesRequest from '../../../helpers/data/routesRequest';
 import RouteItem from '../RouteItem/RouteItem';
 import RouteEditDisplay from '../RouteEditDisplay/RouteEditDisplay';
-import './RouteEdit.scss';
+import './LocationDetails.scss';
 
 
-class RouteEdit extends React.Component {
+class LocationDetails extends React.Component {
 state = {
-  newUid: '',
   locationRouteArray: [],
   selectedRouteId: -1,
   isEditing: false,
@@ -27,8 +25,8 @@ state = {
   }
 
   changeView2 = () => {
-    const locationId = this.props.match.params.id;
-    this.props.history.push(`/route/${locationId}/edit/`);
+    const { locationId } = this.props.match.params;
+    this.props.history.push(`/locations/${locationId}/routes/add`);
     // this.setState({ selectedLocationId: locationId });
   }
 
@@ -37,10 +35,9 @@ state = {
     // this.setState({ selectedLocationId: locationId });
   }
 
-  getSomeData = (location) => {
-    const newUid = authRequests.getCurrentUid();
-    this.setState({ newUid });
-    routesRequest.getRoutes(location)
+  getSomeData = () => {
+    const { locationId } = this.props.match.params;
+    routesRequest.getRoutes(locationId)
       .then((locationRouteArray) => {
         this.setState({ locationRouteArray });
       })
@@ -50,8 +47,8 @@ state = {
   // about resolves to the locationRouteArray and the below
   // resolveds to the same but should it?
   getSomeDataUid = () => {
-    const newUid = authRequests.getCurrentUid();
-    this.setState({ newUid });
+    // const newUid = authRequests.getCurrentUid();
+    // this.setState({ newUid });
     routesRequest.getRoutes()
       .then((locationRouteArray) => {
         this.setState({ locationRouteArray });
@@ -60,7 +57,7 @@ state = {
   }
 
   componentWillMount() {
-    this.getSomeData(this.props.match.params.id);
+    this.getSomeData();
   }
 
   deleteSingleRoute = (routeId) => {
@@ -85,7 +82,7 @@ state = {
         key={route.id}
         locationId={this.props.match.params.id}
         getSomeData2={this.getSomeData}
-        deleteSingleDevice={deleteSingleRoute}
+        deleteSingleRoute={deleteSingleRoute}
         onListingSelection={this.listingSelectRoute}
         />
     ));
@@ -99,8 +96,8 @@ state = {
     // ));
 
     return (
-      <div className='Home mx-auto'>
-        <h2>RouteEdit</h2>
+      <div className='LocationDetails mx-auto'>
+        <h2>Location Details</h2>
         <div className="row">
         <button className="btn btn-outline-light" onClick={this.changeView2}>Add Route</button>
 
@@ -123,4 +120,4 @@ state = {
   }
 }
 
-export default RouteEdit;
+export default LocationDetails;
