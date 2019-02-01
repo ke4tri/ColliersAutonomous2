@@ -27,12 +27,14 @@ state = {
   changeView2 = () => {
     const { locationId } = this.props.match.params;
     this.props.history.push(`/locations/${locationId}/routes/add`);
-    // this.setState({ selectedLocationId: locationId });
+  }
+
+  changeView1 = () => {
+    this.props.history.push(`/locations/${this.props.match.params.id}/routes/:routeId/edit`);
   }
 
   changeViewLaunch = () => {
     this.props.history.push('/launch');
-    // this.setState({ selectedLocationId: locationId });
   }
 
   getSomeData = () => {
@@ -44,11 +46,7 @@ state = {
       .catch(err => console.error('error with getLocations', err));
   }
 
-  // about resolves to the locationRouteArray and the below
-  // resolveds to the same but should it?
   getSomeDataUid = () => {
-    // const newUid = authRequests.getCurrentUid();
-    // this.setState({ newUid });
     routesRequest.getRoutes()
       .then((locationRouteArray) => {
         this.setState({ locationRouteArray });
@@ -86,14 +84,6 @@ state = {
         onListingSelection={this.listingSelectRoute}
         />
     ));
-    // const routeDetails = locationRouteArray.map(route => (
-    //   <RouteEditDisplay
-    //     route={route}
-    //     key={route.id}
-    //     locationId={this.props.match.params.id}
-    //     getSomeData2={this.getSomeData}
-    //     />
-    // ));
 
     return (
       <div className='LocationDetails mx-auto'>
@@ -110,6 +100,7 @@ state = {
             <RouteEditDisplay
               route={selectedRoute}
               passRouteToEdit={passRouteToEdit}
+              changeView={this.changeView1}
             />
           </ul>
           </div>

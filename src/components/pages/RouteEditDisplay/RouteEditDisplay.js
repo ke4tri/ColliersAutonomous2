@@ -1,20 +1,20 @@
 import React from 'react';
-import routeShape from '../../../helpers/propz/routeShape';
+// import PropTypes from 'prop-types';
+// import routeShape from '../../../helpers/propz/routeShape';
 import './RouteEditDisplay.scss';
 
 class RouteEditDisplay extends React.Component {
   // static propTypes = {
-  //   route: routeShape.routeShape,
-  // };
+  //   changeView: PropTypes.func,
+  // }
 
   changeView2 = () => {
-    this.props.history.push(`/locations/${this.props.match.params.id}/routes`);
-    // this.setState({ selectedLocationId: locationId });
+    this.props.history.push(`/locations/${this.props.match.params.id}/routes/:routeId/edit`);
   }
 
-  bind = () => {
-    this.changeView2();
-  }
+  // bind = () => {
+  //   this.changeView2();
+  // }
 
   render() {
     const { route } = this.props;
@@ -44,7 +44,7 @@ class RouteEditDisplay extends React.Component {
               Orientation: {route.orientation}
             </div>
           </div>
-          <button className="btn btn-outline-light" onClick={this.changeView2}>EDIT</button>
+          <button className="btn btn-outline-light" onClick={this.props.changeView}>EDIT</button>
         </div>
       </div>
     );
