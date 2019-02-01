@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import authRequests from '../../../helpers/data/authRequest';
 import routesRequest from '../../../helpers/data/routesRequest';
 import RouteItem from '../RouteItem/RouteItem';
 import RouteEditDisplay from '../RouteEditDisplay/RouteEditDisplay';
@@ -26,8 +25,8 @@ state = {
   }
 
   changeView2 = () => {
-    const locationId = this.props.match.params.id;
-    this.props.history.push(`/route/${locationId}/edit/`);
+    const { locationId } = this.props.match.params;
+    this.props.history.push(`/locations/${locationId}/routes/add`);
     // this.setState({ selectedLocationId: locationId });
   }
 

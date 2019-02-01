@@ -89,8 +89,8 @@ class App extends React.Component {
                   {/* <PublicRoute path='/' exact component={Auth} authed={this.state.authed} /> */}
                   <PrivateRoute path='/' exact component={Devices} authed={this.state.authed} />
                   <PrivateRoute path='/devices' component={Devices} authed={this.state.authed} />
-                  <PrivateRoute path='/locations/:locationId/route/:routeId/edit'component={RouteEditPath} authed={this.state.authed} />
-                  <PrivateRoute path='/locations/:locationId/route/add' component={RouteAdd} authed={this.state.authed} />
+                  <PrivateRoute path='/locations/:locationId/routes/:routeId/edit'component={RouteEditPath} authed={this.state.authed} />
+                  <PrivateRoute path='/locations/:locationId/routes/add' component={RouteAdd} authed={this.state.authed} />
                   <PrivateRoute path='/locations/:locationId' component={LocationDetails} authed={this.state.authed} />
                   <PrivateRoute path='/locations' component={Locations} authed={this.state.authed} />
                   <PrivateRoute path='/launch' component={Launch} authed={this.state.authed} />
