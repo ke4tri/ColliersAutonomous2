@@ -59,7 +59,7 @@ class Locations extends React.Component {
   }
 
   changeView = (locationId) => {
-    this.props.history.push(`/locations/${locationId}/routes`);
+    this.props.history.push(`/locations/${locationId}`);
     this.setState({ selectedLocationId: locationId });
   }
   // NEED TO CALL THE GETROUTE DATA FUNC HERE?

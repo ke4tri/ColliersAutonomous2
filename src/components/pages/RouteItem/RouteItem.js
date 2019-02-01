@@ -5,17 +5,24 @@ import './RouteItem.scss';
 
 class RouteItem extends React.Component {
   // TODO:  add proptype for route and make routeShape
-  static propTypes = {
-    locationId: PropTypes.string,
-    getSomeData2: PropTypes.func,
-    route: routeShape,
-    onListingSelection: PropTypes.func,
-  };
+  // static propTypes = {
+  //   locationId: PropTypes.string,
+  //   getSomeData2: PropTypes.func,
+  //   route: routeShape,
+  //   onListingSelection: PropTypes.func,
+  //   deleteSingleRoute: PropTypes.func,
+  // };
 
   listingClick = (e) => {
     e.stopPropagation();
     const { route, onListingSelection } = this.props;
     onListingSelection(route.id);
+  }
+
+  deleteDevice = (e) => {
+    e.preventDefault();
+    const { deleteSingleRoute, route } = this.props;
+    deleteSingleRoute(route.id);
   }
 
   getLocationRoutes = () => {
