@@ -71,6 +71,10 @@ class Devices extends React.Component {
     }
   }
 
+  // userDeviceId = (deviceId) => {
+  //   deviceRequest.postRequest(deviceId);
+  // };
+
   render() {
     const {
       devicesArray,
@@ -90,6 +94,7 @@ class Devices extends React.Component {
         deleteSingleDevice={this.deleteSingleDevice}
         passEventToEdit={passEventToEdit}
         onListingSelection={this.listingSelectDevice}
+        // userDeviceId={this.userDeviceId}
       />
     ));
 
