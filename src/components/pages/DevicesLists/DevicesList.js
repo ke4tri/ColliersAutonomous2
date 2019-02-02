@@ -19,6 +19,7 @@ class DevicesList extends React.Component {
   state = {
     newUid: '',
     devicesArray: [],
+    uid: '',
   }
 
   selectDevice = (e) => {
@@ -44,9 +45,12 @@ class DevicesList extends React.Component {
   }
 
   userDeviceId = (e) => {
-    const deviceId = e.target.id;
     e.preventDefault();
-    userRequest.postRequest(deviceId);
+    const deviceId = e.target.id;
+    const newUid = authRequests.getCurrentUid();
+    console.log(deviceId);
+    console.log(newUid);
+    userRequest.patchRequest(newUid, deviceId);
   };
 
   render() {
@@ -63,7 +67,7 @@ class DevicesList extends React.Component {
             <button className="btn btn-outline-dark" onClick={this.deleteDevice}>
               <i className="fas fa-trash-alt"></i>
             </button>
-            <button className="btn btn-outline-dark" onClick={this.props.userDeviceId} >
+            <button className="btn btn-outline-dark" id={device.id} onClick={this.userDeviceId} >
               SELECT
             </button>
           </div>
