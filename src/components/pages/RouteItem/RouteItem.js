@@ -1,6 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import routeShape from '../../../helpers/propz/routeShape';
+import authRequests from '../../../helpers/data/authRequest';
+import userRequest from '../../../helpers/data/userRequest';
+// import PropTypes from 'prop-types';
+// import routeShape from '../../../helpers/propz/routeShape';
 import './RouteItem.scss';
 
 class RouteItem extends React.Component {
@@ -19,6 +21,10 @@ class RouteItem extends React.Component {
     onListingSelection(route.id);
   }
 
+  changeView = () => {
+    this.prop.changeView();
+  };
+
   deleteDevice = (e) => {
     e.preventDefault();
     const { deleteSingleRoute, route } = this.props;
@@ -33,10 +39,21 @@ class RouteItem extends React.Component {
     this.getLocationRoutes();
   }
 
+  userRouteId = (e) => {
+    e.preventDefault();
+    const routeId = e.target.id;
+    const newUid = authRequests.getCurrentUid();
+    console.log(routeId);
+    console.log(newUid);
+    userRequest.patchRequestRoute(newUid, routeId);
+    this.props.changeView();
+  };
+
   render() {
     const { route } = this.props;
     return (
-      <li className="event-item text-center" onClick={this.listingClick}>
+    // <li className="event-item text-center" id={route.id} onClick={this.userRouteId}>
+     <li className="event-item text-center" onClick={this.listingClick}>
       <div className="col-1">
         <h4> {route.flightName}</h4>
       </div>
@@ -45,6 +62,11 @@ class RouteItem extends React.Component {
       <div className="d-flex" role="alert">
           <button className="btn btn-outline-lightl m-5 px-5" onClick={this.deleteDevice}>
             <i className="fas fa-trash-alt"></i>
+          </button>
+        </div>
+        <div className="d-flex" role="alert">
+          <button className="btn btn-outline-lightl m-5 px-5" id={route.id} onClick={this.userRouteId}>
+            SET
           </button>
         </div>
       </li>
