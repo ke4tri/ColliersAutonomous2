@@ -25,27 +25,10 @@ class RouteEditPath extends React.Component {
     device: PropTypes.string,
   };
 
-  // routesRequest.updateRoute(editId, newRoute)
-  // .then(() => {
-  //   this.setState({ isEditing: false, editId: '-1' });
-  //   // this.getSomeData();
-  // })
-  // .catch(err => console.error('error with devices post', err));
-
-  // passEventToEdit = routeId => this.setState({ isEditing: true, editId: routeId });
-
-  // editDevice() {
-  //   const path = this.props.match.params.routeId;
-  //   console.log(path);
-  //   this.setState({ isEditing: true, editId: path });
-  // }
-
   componentDidMount() {
-    // this.editDevice();
     const editId = this.props.match.params.routeId;
     console.log(editId);
     this.setState({ isEditing: true, editId });
-    // const { editId } = this.state;
     routesRequest.getSingleRoute(editId)
       .then((route) => {
         console.log(route.data);
@@ -91,8 +74,8 @@ class RouteEditPath extends React.Component {
     this.setState({ currentCommand: currentCommand2 });
   }
 
-  formSubmitEvent = (newRoute) => {
-    routesRequest.postRequest(newRoute)
+  formSubmitEvent = (newRoute, newRouteId) => {
+    routesRequest.updateRoute(newRoute, newRouteId)
       .then(() => {
         this.props.history.push(`/locations/${this.props.match.params.locationId}`);
       })
@@ -102,31 +85,12 @@ class RouteEditPath extends React.Component {
   formSubmit = (e) => {
     e.preventDefault();
     const myRoute = { ...this.state.newRoute };
+    const newRouteId = this.state.editId;
     myRoute.uid = authRequests.getCurrentUid();
     myRoute.locationId = this.props.match.params.locationId;
     myRoute.cmd = this.state.currentCommand.join(',');
-    this.formSubmitEvent(myRoute);
+    this.formSubmitEvent(newRouteId, myRoute);
   }
-
-  // componentDidUpda() {
-  //   // const { editId } = this.state;
-  //   // routesRequest.getSingleRoute(editId)
-  //   //   .then((route) => {
-  //   //     console.log(route);
-  //   //     // const locationId = this.props.match.params.id;
-  //   //     const newRoute = {
-  //   //       uid: route.data.uid,
-  //   //       name: route.data.flightName,
-  //   //       faaSerial: route.data.faaSerial,
-  //   //       manufacture: route.data.manufacture,
-  //   //       type: route.data.type,
-  //   //       locationId: route.data.locationId,
-  //   //     };
-  //   //     this.setState({ newRoute });
-  //   //   })
-  //   //   .catch(err => console.error('error with getSingleEvent', err));
-  // }
-
 
   render() {
     const { newRoute, currentCommand } = this.state;
@@ -213,5 +177,24 @@ class RouteEditPath extends React.Component {
     );
   }
 }
+
+//  componentDidUpda() {
+//     const { editId } = this.state;
+//     routesRequest.getSingleRoute(editId)
+//       .then((route) => {
+//         console.log(route);
+//         // const locationId = this.props.match.params.id;
+//         const newRoute = {
+//           uid: route.data.uid,
+//           name: route.data.flightName,
+//           faaSerial: route.data.faaSerial,
+//           manufacture: route.data.manufacture,
+//           type: route.data.type,
+//           locationId: route.data.locationId,
+//         };
+//         this.setState({ newRoute });
+//       })
+//       .catch(err => console.error('error with getSingleEvent', err));
+//   }
 
 export default RouteEditPath;
