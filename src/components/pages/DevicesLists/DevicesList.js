@@ -14,16 +14,22 @@ class DevicesList extends React.Component {
     device: deviceShape.deviceShape,
     onListingSelection: PropTypes.func,
     userDeviceId: PropTypes.func,
+    changeView: PropTypes.func,
   };
 
   state = {
     newUid: '',
     devicesArray: [],
+    uid: '',
   }
 
   selectDevice = (e) => {
     e.preventDefault();
   }
+
+  // changeView = () => {
+  //   this.props.history.push('/locations');
+  // }
 
   editDevice = (e) => {
     e.preventDefault();
@@ -44,9 +50,13 @@ class DevicesList extends React.Component {
   }
 
   userDeviceId = (e) => {
-    const deviceId = e.target.id;
     e.preventDefault();
-    userRequest.postRequest(deviceId);
+    const deviceId = e.target.id;
+    const newUid = authRequests.getCurrentUid();
+    console.log(deviceId);
+    console.log(newUid);
+    userRequest.patchRequest(newUid, deviceId);
+    this.props.changeView();
   };
 
   render() {
@@ -63,8 +73,8 @@ class DevicesList extends React.Component {
             <button className="btn btn-outline-dark" onClick={this.deleteDevice}>
               <i className="fas fa-trash-alt"></i>
             </button>
-            <button className="btn btn-outline-dark" onClick={this.props.userDeviceId} >
-              SELECT
+            <button className="btn btn-outline-dark" id={device.id} onClick={this.userDeviceId} >
+              SET
             </button>
           </div>
         );

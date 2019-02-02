@@ -30,6 +30,10 @@ class Devices extends React.Component {
     });
   }
 
+  changeView = () => {
+    this.props.history.push('/locations');
+  }
+
   getSomeData = () => {
     const newUid = authRequests.getCurrentUid();
     this.setState({ newUid });
@@ -94,6 +98,7 @@ class Devices extends React.Component {
         deleteSingleDevice={this.deleteSingleDevice}
         passEventToEdit={passEventToEdit}
         onListingSelection={this.listingSelectDevice}
+        changeView={this.changeView}
         // userDeviceId={this.userDeviceId}
       />
     ));

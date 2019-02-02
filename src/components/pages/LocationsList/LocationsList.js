@@ -38,7 +38,7 @@ class LocationsList extends React.Component {
               <i className="fas fa-trash-alt"></i>
             </button>
             <button className="btn btn-outline-dark m-5" onClick={this.listingClick}>
-              SELECT
+              SET
             </button>
           </div>
         );
