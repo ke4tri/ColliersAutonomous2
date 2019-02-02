@@ -122,7 +122,19 @@ class RouteEditPath extends React.Component {
               onChange={this.flightNameChange}
             />
           </div>
-          <div>{currentCommand.join(',')}</div>
+          {/* <div>{currentCommand.join(',')}</div> */}
+          <div className="input-group m-1">
+            <label htmlFor="event"></label>
+            <input
+              type="text"
+              className="form-control"
+              id="latLong"
+              aria-describedby="eventHelp"
+              placeholder="99.99.9999, -99.999999"
+              value={newRoute.cmd}
+              onChange={this.cmd}
+            />
+          </div>
           <div className="input-group m-1">
             <label htmlFor="event"></label>
             <input
