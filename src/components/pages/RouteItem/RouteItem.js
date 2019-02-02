@@ -1,6 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import routeShape from '../../../helpers/propz/routeShape';
+// import PropTypes from 'prop-types';
+// import routeShape from '../../../helpers/propz/routeShape';
+import routesRequest from '../../../helpers/data/routesRequest';
 import './RouteItem.scss';
 
 class RouteItem extends React.Component {
@@ -19,10 +20,22 @@ class RouteItem extends React.Component {
     onListingSelection(route.id);
   }
 
-  deleteDevice = (e) => {
+  // deleteDevice = (e) => {
+  //   e.preventDefault();
+  //   const { deleteSingleRoute, route } = this.props;
+  //   console.log(deleteSingleRoute);
+  //   console.log(route);
+  //   deleteSingleRoute(route.id);
+  // }
+
+  deleteSingleRoute = (e) => {
     e.preventDefault();
-    const { deleteSingleRoute, route } = this.props;
-    deleteSingleRoute(route.id);
+    const { route } = this.props;
+    routesRequest.deleteRoutes(route.id)
+      .then(() => {
+        this.getLocationRoutes();
+      })
+      .catch(err => console.error('error with delete single', err));
   }
 
   getLocationRoutes = () => {
@@ -43,8 +56,13 @@ class RouteItem extends React.Component {
       <div className="row">
       </div>
       <div className="d-flex" role="alert">
-          <button className="btn btn-outline-lightl m-5 px-5" onClick={this.deleteDevice}>
+          <button className="btn btn-outline-lightl m-5 px-5" onClick={this.deleteSingleRoute}>
             <i className="fas fa-trash-alt"></i>
+          </button>
+        </div>
+        <div className="d-flex" role="alert">
+          <button className="btn btn-outline-lightl m-5 px-5" id={route.id} onClick={this.deleteDevice}>
+            SET
           </button>
         </div>
       </li>

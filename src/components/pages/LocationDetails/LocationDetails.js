@@ -76,7 +76,6 @@ state = {
     const {
       locationRouteArray,
       selectedRouteId,
-      deleteSingleRoute,
     } = this.state;
     const selectedRoute = locationRouteArray.find(route => route.id === selectedRouteId) || { nope: 'nope' };
     const passRouteToEdit = routeId => this.setState({ isEditing: true, editId: routeId });
@@ -86,7 +85,7 @@ state = {
         key={route.id}
         locationId={this.props.match.params.id}
         getSomeData2={this.getSomeData}
-        deleteSingleRoute={deleteSingleRoute}
+        deleteSingleRoute={this.deleteSingleRoute}
         onListingSelection={this.listingSelectRoute}
         />
     ));
