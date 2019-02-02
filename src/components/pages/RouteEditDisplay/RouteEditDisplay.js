@@ -1,21 +1,7 @@
 import React from 'react';
-import routeShape from '../../../helpers/propz/routeShape';
 import './RouteEditDisplay.scss';
 
 class RouteEditDisplay extends React.Component {
-  // static propTypes = {
-  //   route: routeShape.routeShape,
-  // };
-
-  changeView2 = () => {
-    this.props.history.push(`/locations/${this.props.match.params.id}/routes`);
-    // this.setState({ selectedLocationId: locationId });
-  }
-
-  bind = () => {
-    this.changeView2();
-  }
-
   render() {
     const { route } = this.props;
     if (route.nope) {
@@ -31,7 +17,6 @@ class RouteEditDisplay extends React.Component {
       <div className="col">
         <div className="col">
           <div className="col-2">
-            {/* <img className="rover-image" src="http://pluspng.com/img-png/space-rover-png-automobile-dune-buggy-lunar-rover-moon-buggy-moon-car-nasa-512.png" alt="Rover" width="200" height="200" /> */}
           </div>
           <div className="col">
             <div className="col">
@@ -44,7 +29,7 @@ class RouteEditDisplay extends React.Component {
               Orientation: {route.orientation}
             </div>
           </div>
-          <button className="btn btn-outline-light" onClick={this.changeView2}>EDIT</button>
+          <button className="btn btn-outline-light" onClick={this.props.changeView}>EDIT</button>
         </div>
       </div>
     );

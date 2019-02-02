@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import userRequest from '../../../helpers/data/userRequest';
 import deviceShape from '../../../helpers/propz/deviceShape';
 import authRequests from '../../../helpers/data/authRequest';
 // import deviceRequest from '../../../helpers/data/deviceRequest';
@@ -12,6 +13,7 @@ class DevicesList extends React.Component {
     deleteSingleDevice: PropTypes.func,
     device: deviceShape.deviceShape,
     onListingSelection: PropTypes.func,
+    userDeviceId: PropTypes.func,
   };
 
   state = {
@@ -41,6 +43,12 @@ class DevicesList extends React.Component {
     onListingSelection(device.id);
   }
 
+  userDeviceId = (e) => {
+    const deviceId = e.target.id;
+    e.preventDefault();
+    userRequest.postRequest(deviceId);
+  };
+
   render() {
     const { device } = this.props;
     const uid = authRequests.getCurrentUid();
@@ -55,7 +63,7 @@ class DevicesList extends React.Component {
             <button className="btn btn-outline-dark" onClick={this.deleteDevice}>
               <i className="fas fa-trash-alt"></i>
             </button>
-            <button className="btn btn-outline-dark" >
+            <button className="btn btn-outline-dark" onClick={this.props.userDeviceId} >
               SELECT
             </button>
           </div>
