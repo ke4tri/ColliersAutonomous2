@@ -14,6 +14,7 @@ class DevicesList extends React.Component {
     device: deviceShape.deviceShape,
     onListingSelection: PropTypes.func,
     userDeviceId: PropTypes.func,
+    changeView: PropTypes.func,
   };
 
   state = {
@@ -25,6 +26,10 @@ class DevicesList extends React.Component {
   selectDevice = (e) => {
     e.preventDefault();
   }
+
+  // changeView = () => {
+  //   this.props.history.push('/locations');
+  // }
 
   editDevice = (e) => {
     e.preventDefault();
@@ -51,6 +56,7 @@ class DevicesList extends React.Component {
     console.log(deviceId);
     console.log(newUid);
     userRequest.patchRequest(newUid, deviceId);
+    this.props.changeView();
   };
 
   render() {
@@ -68,7 +74,7 @@ class DevicesList extends React.Component {
               <i className="fas fa-trash-alt"></i>
             </button>
             <button className="btn btn-outline-dark" id={device.id} onClick={this.userDeviceId} >
-              SELECT
+              SET
             </button>
           </div>
         );
