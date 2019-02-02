@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import routesRequest from '../../../helpers/data/routesRequest';
 import './RouteEditPath.scss';
 
 const defaultRoute = {
@@ -14,6 +16,12 @@ class RouteEditPath extends React.Component {
   state = {
     newRoute: defaultRoute,
     currentCommand: [],
+    isEditing: false,
+    editId: '-1',
+  };
+
+  static propTypes = {
+    device: PropTypes.string,
   };
 
   // routesRequest.updateRoute(editId, newRoute)
@@ -23,24 +31,56 @@ class RouteEditPath extends React.Component {
   // })
   // .catch(err => console.error('error with devices post', err));
 
+  // passEventToEdit = routeId => this.setState({ isEditing: true, editId: routeId });
 
-  // componentDidUpdate() {
-  //     routesRequest.getSingleRoute(editId)
-  //       .then((route) => {
-  //         // const locationId = this.props.match.params.id;
-  //         const newDevice = {
-  //           uid: route.data.uid,
-  //           name: route.data.flightName,
-  //           faaSerial: route.data.faaSerial,
-  //           manufacture: route.data.manufacture,
-  //           type: route.data.type,
-  //           locationId: route.data.locationId,
-  //         };
-  //         this.setState({ newDevice });
-  //       })
-  //       .catch(err => console.error('error with getSingleEvent', err));
-  //   }
+  // editDevice() {
+  //   const path = this.props.match.params.routeId;
+  //   console.log(path);
+  //   this.setState({ isEditing: true, editId: path });
   // }
+
+  componentDidMount() {
+    // this.editDevice();
+    const editId = this.props.match.params.routeId;
+    console.log(editId);
+    this.setState({ isEditing: true, editId });
+    // const { editId } = this.state;
+    routesRequest.getSingleRoute(editId)
+      .then((route) => {
+        console.log(route.data);
+        // const locationId = this.props.match.params.id;
+        // const newRoute = {
+        //   uid: route.data.uid,
+        //   name: route.data.flightName,
+        //   faaSerial: route.data.faaSerial,
+        //   manufacture: route.data.manufacture,
+        //   type: route.data.type,
+        //   locationId: route.data.locationId,
+        // };
+        this.setState({ newRoute: route.data });
+      })
+      .catch(err => console.error('error with getSingleEvent', err));
+  }
+
+  // componentDidUpda() {
+  //   // const { editId } = this.state;
+  //   // routesRequest.getSingleRoute(editId)
+  //   //   .then((route) => {
+  //   //     console.log(route);
+  //   //     // const locationId = this.props.match.params.id;
+  //   //     const newRoute = {
+  //   //       uid: route.data.uid,
+  //   //       name: route.data.flightName,
+  //   //       faaSerial: route.data.faaSerial,
+  //   //       manufacture: route.data.manufacture,
+  //   //       type: route.data.type,
+  //   //       locationId: route.data.locationId,
+  //   //     };
+  //   //     this.setState({ newRoute });
+  //   //   })
+  //   //   .catch(err => console.error('error with getSingleEvent', err));
+  // }
+
 
   render() {
     const { newRoute, currentCommand } = this.state;

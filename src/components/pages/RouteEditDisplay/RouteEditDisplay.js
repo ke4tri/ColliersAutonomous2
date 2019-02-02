@@ -8,12 +8,19 @@ class RouteEditDisplay extends React.Component {
   //   changeView: PropTypes.func,
   // }
 
-  changeView2 = () => {
-    this.props.history.push(`/locations/${this.props.match.params.id}/routes/:routeId/edit`);
-  }
+  // changeView2 = () => {
+  //   const { route } = this.props;
+  //   this.props.history.push(`/locations/${this.props.match.params.id}/routes/:routeId/edit`);
+  // }
 
   // bind = () => {
   //   this.changeView2();
+  // }
+
+  // editDevice = (e) => {
+  //   e.preventDefault();
+  //   const { passEventToEdit, device } = this.props;
+  //   passEventToEdit(device.id);
   // }
 
   render() {
@@ -31,7 +38,6 @@ class RouteEditDisplay extends React.Component {
       <div className="col">
         <div className="col">
           <div className="col-2">
-            {/* <img className="rover-image" src="http://pluspng.com/img-png/space-rover-png-automobile-dune-buggy-lunar-rover-moon-buggy-moon-car-nasa-512.png" alt="Rover" width="200" height="200" /> */}
           </div>
           <div className="col">
             <div className="col">

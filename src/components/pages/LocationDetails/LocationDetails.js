@@ -9,6 +9,7 @@ import './LocationDetails.scss';
 class LocationDetails extends React.Component {
 state = {
   locationRouteArray: [],
+  locationId: '',
   selectedRouteId: -1,
   isEditing: false,
   editId: '-1',
@@ -26,11 +27,16 @@ state = {
 
   changeView2 = () => {
     const { locationId } = this.props.match.params;
+    this.setState({
+      locationId,
+    });
     this.props.history.push(`/locations/${locationId}/routes/add`);
   }
 
   changeView1 = () => {
-    this.props.history.push(`/locations/${this.props.match.params.id}/routes/:routeId/edit`);
+    const { locationId } = this.props.match.params;
+    const { selectedRouteId } = this.state;
+    this.props.history.push(`/locations/${locationId}/routes/${selectedRouteId}/edit`);
   }
 
   changeViewLaunch = () => {
