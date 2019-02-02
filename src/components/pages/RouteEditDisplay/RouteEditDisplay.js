@@ -1,28 +1,7 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
-// import routeShape from '../../../helpers/propz/routeShape';
 import './RouteEditDisplay.scss';
 
 class RouteEditDisplay extends React.Component {
-  // static propTypes = {
-  //   changeView: PropTypes.func,
-  // }
-
-  // changeView2 = () => {
-  //   const { route } = this.props;
-  //   this.props.history.push(`/locations/${this.props.match.params.id}/routes/:routeId/edit`);
-  // }
-
-  // bind = () => {
-  //   this.changeView2();
-  // }
-
-  // editDevice = (e) => {
-  //   e.preventDefault();
-  //   const { passEventToEdit, device } = this.props;
-  //   passEventToEdit(device.id);
-  // }
-
   render() {
     const { route } = this.props;
     if (route.nope) {

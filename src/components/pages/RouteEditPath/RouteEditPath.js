@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import authRequests from '../../../helpers/data/authRequest';
 import routesRequest from '../../../helpers/data/routesRequest';
 import './RouteEditPath.scss';
 
@@ -62,6 +63,51 @@ class RouteEditPath extends React.Component {
       .catch(err => console.error('error with getSingleEvent', err));
   }
 
+  formFieldStringState = (name, e) => {
+    e.preventDefault();
+    const tempRoute = { ...this.state.newRoute };
+    tempRoute[name] = e.target.value;
+    this.setState({ newRoute: tempRoute });
+  };
+
+  formFieldRouteState = (name, route) => {
+    const tempRoute = { ...this.state.newRoute };
+    tempRoute[name] = route;
+    this.setState({ newRoute: tempRoute });
+  }
+
+  flightNameChange = e => this.formFieldStringState('flightName', e);
+
+  cmdChange2 = array => this.formFieldRouteState('cmd', array);
+
+  latLongChange = e => this.formFieldStringState('latLong', e);
+
+  orientationChange = e => this.formFieldStringState('orientation', e);
+
+  cmdChange = (e) => {
+    e.preventDefault();
+    const currentCommand2 = this.state.currentCommand;
+    currentCommand2.push(e.target.value);
+    this.setState({ currentCommand: currentCommand2 });
+  }
+
+  formSubmitEvent = (newRoute) => {
+    routesRequest.postRequest(newRoute)
+      .then(() => {
+        this.props.history.push(`/locations/${this.props.match.params.locationId}`);
+      })
+      .catch(err => console.error('error with devices post', err));
+  }
+
+  formSubmit = (e) => {
+    e.preventDefault();
+    const myRoute = { ...this.state.newRoute };
+    myRoute.uid = authRequests.getCurrentUid();
+    myRoute.locationId = this.props.match.params.locationId;
+    myRoute.cmd = this.state.currentCommand.join(',');
+    this.formSubmitEvent(myRoute);
+  }
+
   // componentDidUpda() {
   //   // const { editId } = this.state;
   //   // routesRequest.getSingleRoute(editId)
@@ -122,7 +168,7 @@ class RouteEditPath extends React.Component {
               onChange={this.flightNameChange}
             />
           </div>
-          {/* <div>{currentCommand.join(',')}</div> */}
+          <div>{currentCommand.join(',')}</div>
           <div className="input-group m-1">
             <label htmlFor="event"></label>
             <input
@@ -132,7 +178,8 @@ class RouteEditPath extends React.Component {
               aria-describedby="eventHelp"
               placeholder="99.99.9999, -99.999999"
               value={newRoute.cmd}
-              onChange={this.cmd}
+              // onChange={this.cmd}
+              onChange={currentCommand.join(',')}
             />
           </div>
           <div className="input-group m-1">
