@@ -53,7 +53,8 @@ class RouteItem extends React.Component {
   render() {
     const { route } = this.props;
     return (
-      <li className="event-item text-center" onClick={this.listingClick}>
+    // <li className="event-item text-center" id={route.id} onClick={this.userRouteId}>
+     <li className="event-item text-center" onClick={this.listingClick}>
       <div className="col-1">
         <h4> {route.flightName}</h4>
       </div>
