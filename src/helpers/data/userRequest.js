@@ -33,6 +33,9 @@ const putRequest = (usersId, user) => axios.put(`${firebaseUrl}/users/${usersId}
 
 const updateUsersItem = (usersId, user) => axios.put(`${firebaseUrl}/users/${usersId}.json`, user);
 
+const patchRequestLoc = (usersId, currentLocationId) => axios.patch(`${firebaseUrl}/users/${usersId}.json`, { currentLocationId });
+
+const patchRequestRoute = (usersId, currentRouteId) => axios.patch(`${firebaseUrl}/users/${usersId}.json`, { currentRouteId });
 
 export default {
   getUser,
@@ -42,4 +45,6 @@ export default {
   putRequest,
   updateUsersItem,
   patchRequest,
+  patchRequestLoc,
+  patchRequestRoute,
 };

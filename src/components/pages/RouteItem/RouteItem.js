@@ -1,7 +1,7 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
-// import routeShape from '../../../helpers/propz/routeShape';
 import routesRequest from '../../../helpers/data/routesRequest';
+import authRequests from '../../../helpers/data/authRequest';
+import userRequest from '../../../helpers/data/userRequest';
 import './RouteItem.scss';
 
 class RouteItem extends React.Component {
@@ -20,13 +20,9 @@ class RouteItem extends React.Component {
     onListingSelection(route.id);
   }
 
-  // deleteDevice = (e) => {
-  //   e.preventDefault();
-  //   const { deleteSingleRoute, route } = this.props;
-  //   console.log(deleteSingleRoute);
-  //   console.log(route);
-  //   deleteSingleRoute(route.id);
-  // }
+  changeView = () => {
+    this.prop.changeView();
+  };
 
   deleteSingleRoute = (e) => {
     e.preventDefault();
@@ -46,6 +42,14 @@ class RouteItem extends React.Component {
     this.getLocationRoutes();
   }
 
+  userRouteId = (e) => {
+    e.preventDefault();
+    const routeId = e.target.id;
+    const newUid = authRequests.getCurrentUid();
+    userRequest.patchRequestRoute(newUid, routeId);
+    this.props.changeView();
+  };
+
   render() {
     const { route } = this.props;
     return (
@@ -61,7 +65,7 @@ class RouteItem extends React.Component {
           </button>
         </div>
         <div className="d-flex" role="alert">
-          <button className="btn btn-outline-lightl m-5 px-5" id={route.id} onClick={this.deleteDevice}>
+          <button className="btn btn-outline-lightl m-5 px-5" id={route.id} onClick={this.userRouteId}>
             SET
           </button>
         </div>

@@ -39,6 +39,12 @@ state = {
     this.props.history.push(`/locations/${locationId}/routes/${selectedRouteId}/edit`);
   }
 
+  changeView3 = () => {
+    // const { locationId } = this.props.match.params;
+    // const { selectedRouteId } = this.state;
+    this.props.history.push('/launch');
+  }
+
   changeViewLaunch = () => {
     this.props.history.push('/launch');
   }
@@ -87,6 +93,7 @@ state = {
         getSomeData2={this.getSomeData}
         deleteSingleRoute={this.deleteSingleRoute}
         onListingSelection={this.listingSelectRoute}
+        changeView={this.changeView3}
         />
     ));
 
