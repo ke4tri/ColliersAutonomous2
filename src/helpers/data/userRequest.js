@@ -27,11 +27,11 @@ const postRequest = user => axios.post(`${firebaseUrl}/users.json`, user);
 
 const getSingleUsersItemId = userId => axios.get(`${firebaseUrl}/user/${userId}.json`);
 
+const patchRequest = (usersId, currentDeviceUid) => axios.patch(`${firebaseUrl}/users/${usersId}.json`, { currentDeviceUid });
+
 const putRequest = (usersId, user) => axios.put(`${firebaseUrl}/users/${usersId}.json`, user);
 
 const updateUsersItem = (usersId, user) => axios.put(`${firebaseUrl}/users/${usersId}.json`, user);
-
-const patchRequest = (usersId, currentDeviceUid) => axios.patch(`${firebaseUrl}/users/${usersId}.json`, { currentDeviceUid });
 
 const patchRequestLoc = (usersId, currentLocationId) => axios.patch(`${firebaseUrl}/users/${usersId}.json`, { currentLocationId });
 

@@ -2,9 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import userRequest from '../../../helpers/data/userRequest';
 import locationShape from '../../../helpers/propz/locationShape';
+import userRequest from '../../../helpers/data/userRequest';
 import authRequests from '../../../helpers/data/authRequest';
 
 import './LocationsList.scss';
+import routesRequest from '../../../helpers/data/routesRequest';
 
 class LocationsList extends React.Component {
   static propTypes = {
@@ -22,7 +24,6 @@ class LocationsList extends React.Component {
   }
 
   listingClick = (e) => {
-    // e.stopPropagation();
     const { location, changeView } = this.props;
     changeView(location.id);
   }
@@ -46,7 +47,6 @@ class LocationsList extends React.Component {
             <button className="btn btn-outline-dark m-5" onClick={this.deleteDevice}>
               <i className="fas fa-trash-alt"></i>
             </button>
-            {/* <button className="btn btn-outline-dark m-5" onClick={this.listingClick}> */}
             <button className="btn btn-outline-dark m-5" id={location.id} onClick={this.userLocationId}>
               SET
             </button>
