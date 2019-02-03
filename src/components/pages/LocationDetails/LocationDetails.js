@@ -40,8 +40,6 @@ state = {
   }
 
   changeView3 = () => {
-    // const { locationId } = this.props.match.params;
-    // const { selectedRouteId } = this.state;
     this.props.history.push('/launch');
   }
 

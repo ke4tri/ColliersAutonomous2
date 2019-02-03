@@ -27,20 +27,9 @@ class RouteEditPath extends React.Component {
 
   componentDidMount() {
     const editId = this.props.match.params.routeId;
-    console.log(editId);
     this.setState({ isEditing: true, editId });
     routesRequest.getSingleRoute(editId)
       .then((route) => {
-        console.log(route.data);
-        // const locationId = this.props.match.params.id;
-        // const newRoute = {
-        //   uid: route.data.uid,
-        //   name: route.data.flightName,
-        //   faaSerial: route.data.faaSerial,
-        //   manufacture: route.data.manufacture,
-        //   type: route.data.type,
-        //   locationId: route.data.locationId,
-        // };
         this.setState({ newRoute: route.data });
       })
       .catch(err => console.error('error with getSingleEvent', err));
@@ -142,7 +131,6 @@ class RouteEditPath extends React.Component {
               aria-describedby="eventHelp"
               placeholder="99.99.9999, -99.999999"
               value={newRoute.cmd}
-              // onChange={this.cmd}
               onChange={currentCommand.join(',')}
             />
           </div>
@@ -177,24 +165,5 @@ class RouteEditPath extends React.Component {
     );
   }
 }
-
-//  componentDidUpda() {
-//     const { editId } = this.state;
-//     routesRequest.getSingleRoute(editId)
-//       .then((route) => {
-//         console.log(route);
-//         // const locationId = this.props.match.params.id;
-//         const newRoute = {
-//           uid: route.data.uid,
-//           name: route.data.flightName,
-//           faaSerial: route.data.faaSerial,
-//           manufacture: route.data.manufacture,
-//           type: route.data.type,
-//           locationId: route.data.locationId,
-//         };
-//         this.setState({ newRoute });
-//       })
-//       .catch(err => console.error('error with getSingleEvent', err));
-//   }
 
 export default RouteEditPath;

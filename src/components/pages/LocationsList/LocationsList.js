@@ -2,11 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import userRequest from '../../../helpers/data/userRequest';
 import locationShape from '../../../helpers/propz/locationShape';
-import userRequest from '../../../helpers/data/userRequest';
 import authRequests from '../../../helpers/data/authRequest';
 
 import './LocationsList.scss';
-import routesRequest from '../../../helpers/data/routesRequest';
 
 class LocationsList extends React.Component {
   static propTypes = {
