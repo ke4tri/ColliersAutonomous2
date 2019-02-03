@@ -44,7 +44,6 @@ class Devices extends React.Component {
       .catch(err => console.error('error with getLocations', err));
   }
 
-  // change this to componentDidMount()?
   componentWillMount() {
     this.getSomeData();
   }
@@ -75,10 +74,6 @@ class Devices extends React.Component {
     }
   }
 
-  // userDeviceId = (deviceId) => {
-  //   deviceRequest.postRequest(deviceId);
-  // };
-
   render() {
     const {
       devicesArray,
@@ -99,7 +94,6 @@ class Devices extends React.Component {
         passEventToEdit={passEventToEdit}
         onListingSelection={this.listingSelectDevice}
         changeView={this.changeView}
-        // userDeviceId={this.userDeviceId}
       />
     ));
 

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import userRequest from '../../../helpers/data/userRequest';
 import deviceShape from '../../../helpers/propz/deviceShape';
 import authRequests from '../../../helpers/data/authRequest';
-// import deviceRequest from '../../../helpers/data/deviceRequest';
 import './DevicesList.scss';
 
 class DevicesList extends React.Component {
@@ -27,10 +26,6 @@ class DevicesList extends React.Component {
     e.preventDefault();
   }
 
-  // changeView = () => {
-  //   this.props.history.push('/locations');
-  // }
-
   editDevice = (e) => {
     e.preventDefault();
     const { passEventToEdit, device } = this.props;
@@ -53,8 +48,6 @@ class DevicesList extends React.Component {
     e.preventDefault();
     const deviceId = e.target.id;
     const newUid = authRequests.getCurrentUid();
-    console.log(deviceId);
-    console.log(newUid);
     userRequest.patchRequest(newUid, deviceId);
     this.props.changeView();
   };

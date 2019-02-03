@@ -62,7 +62,6 @@ class Locations extends React.Component {
     this.props.history.push(`/locations/${locationId}`);
     this.setState({ selectedLocationId: locationId });
   }
-  // NEED TO CALL THE GETROUTE DATA FUNC HERE?
 
   render() {
     const {
@@ -88,11 +87,6 @@ class Locations extends React.Component {
         <div className="row mr-1">
           <ul>{ locationsItemComponents }</ul>
         </div>
-        {/* <div className="col mr-5">
-          <LocationsDisplay
-          location={selectedLocation}
-          />
-        </div> */}
         <div className="col">
           <LocationsForm
             onSubmit={this.formSubmitEvent}
