@@ -15,7 +15,7 @@ class DeviceDisplay extends React.Component {
     }
     if (device.type === 'Drone') {
       return (
-        <div className="col">
+        <div className="clearBox mt-5 col shadow-lg">
           <div className="col">
             <div className="col-2">
               <img className="drone-image" src="https://pngimage.net/wp-content/uploads/2018/05/drone-vector-png-6.png" alt="Drone" width="200" height="200" />
@@ -36,7 +36,7 @@ class DeviceDisplay extends React.Component {
       );
     }
     return (
-      <div className="col">
+      <div className="clearBox mt-5 col shadow-lg">
         <div className="col">
           <div className="col-2">
             <img className="rover-image" src="http://pluspng.com/img-png/space-rover-png-automobile-dune-buggy-lunar-rover-moon-buggy-moon-car-nasa-512.png" alt="Rover" width="200" height="200" />

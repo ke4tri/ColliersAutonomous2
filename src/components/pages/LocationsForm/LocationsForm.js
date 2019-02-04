@@ -58,7 +58,7 @@ class LocationsForm extends React.Component {
     const { newLocation } = this.state;
     // const { isEditing } = this.props;
     return (
-      <div className="event-form col">
+      <div className="event-form col mt-5">
       <form onSubmit={this.formSubmit}>
           <div className="form-group ">
             <label htmlFor="event"></label>

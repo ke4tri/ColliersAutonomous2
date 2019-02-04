@@ -99,17 +99,17 @@ class Devices extends React.Component {
 
     return (
       <div className="text-center col">
-        <h1>Your Devices</h1>
+        <h1><u>Devices</u></h1>
         <div className="row">
           <div className="row mr-1">
             <ul>{ devicesItemComponents }</ul>
           </div>
-          <div className="col mr-5 shadow-lg">
+          <div className="clearBox2 col ml-4 mb-3 shadow-lg">
             <DeviceDisplay
             device={selectedListing}
             />
           </div>
-          <div className="col">
+          <div className="mb-1 col">
             <DeviceForm
               onSubmit={this.formSubmitEvent}
               isEditing={isEditing}

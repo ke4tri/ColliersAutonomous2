@@ -82,12 +82,12 @@ class Locations extends React.Component {
     ));
     return (
       <div className="text-center col">
-      <h1>Your Locations</h1>
+      <h1><u>Your Locations</u></h1>
       <div className="row shadow-lg">
         <div className="row mr-1">
           <ul>{ locationsItemComponents }</ul>
         </div>
-        <div className="col align-middle pr-5 container2 shadow-lg">
+        <div className="col align-middle pr-5 container2 shadow-lg locationForm">
           <LocationsForm
             onSubmit={this.formSubmitEvent}
             isEditing={isEditing}
