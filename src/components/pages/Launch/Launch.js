@@ -82,7 +82,7 @@ class Launch extends React.Component {
   render() {
     return (
       <div className='Home mx-auto'>
-        <h2>Launch</h2>
+        <h1>Launch</h1>
         <LaunchDisplay
           activeDevice={this.state.currentDeviceUid}
           activeLocation={this.state.currentLocationId}

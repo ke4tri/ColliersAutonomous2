@@ -75,7 +75,7 @@ class DevicesList extends React.Component {
       return <div className="col-2"></div>;
     };
     return (
-      <li className="event-item text-center" onClick={this.listingClick}>
+      <li className="event-item text-center pr-5" onClick={this.listingClick}>
         <div className="col-1">
           <h4> {device.name}</h4>
           <p> {device.type}</p>

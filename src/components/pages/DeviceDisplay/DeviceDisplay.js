@@ -1,11 +1,7 @@
 import React from 'react';
-import deviceProz from '../../../helpers/propz/deviceShape';
 import './DeviceDisplay.scss';
 
 class DeviceDisplay extends React.Component {
-  static propTypes = { device: deviceProz.deviceOptionalShape };
-
-
   render() {
     const { device } = this.props;
     if (device.nope) {

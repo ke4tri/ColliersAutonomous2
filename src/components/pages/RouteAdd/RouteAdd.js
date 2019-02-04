@@ -73,7 +73,7 @@ class RouteAdd extends React.Component {
           <form onClick={this.cmdChange}>
           <div className="wrapButton">
             <div className="btn-group d-flex justify-content-center">
-              <button type="button" className="taco btn btn-outline-light m-2 p-3" value="takeoff">TAKE OFF</button>
+              <button type="button" className="taco btn btn-outline-light m-2 p-3" value="command,takeoff">TAKE OFF</button>
               <button type="button" className="taco btn btn-outline-light m-2 p-3" value="up20">UP</button>
               <button type="button" className="taco btn btn-outline-light m-2 p-3" value="land">LAND</button>
             </div>
@@ -129,7 +129,7 @@ class RouteAdd extends React.Component {
               onChange={this.orientationChange}
             />
           </div>
-          <button className="btn btn-danger">Save</button>
+          <button className="btn btn-danger btn-lg">Save</button>
         </form>
       </div>
      </div>

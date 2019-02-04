@@ -104,7 +104,7 @@ class Devices extends React.Component {
           <div className="row mr-1">
             <ul>{ devicesItemComponents }</ul>
           </div>
-          <div className="col mr-5">
+          <div className="col mr-5 shadow-lg">
             <DeviceDisplay
             device={selectedListing}
             />

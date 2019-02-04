@@ -125,7 +125,7 @@ class DeviceForm extends React.Component {
               onChange={this.typeChange}
             />
           </div>
-          <button className="btn btn-outline-light">Save</button>
+          <button className="btn btn-outline-light btn-lg">Save</button>
         </form>
       </div>
     );
