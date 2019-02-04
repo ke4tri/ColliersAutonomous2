@@ -41,7 +41,7 @@ class LocationsList extends React.Component {
     const makeButtons = () => {
       if (location.uid === uid) {
         return (
-          <div className="d-flex row" role="alert">
+          <div className="d-flex row pl-5" role="alert">
             <button className="btn btn-outline-dark m-5" onClick={this.deleteDevice}>
               <i className="fas fa-trash-alt"></i>
             </button>
@@ -54,7 +54,8 @@ class LocationsList extends React.Component {
       return '';
     };
     return (
-      <li className="event-item text-center">
+      <div className="container">
+      <li className="event-item text-center pr-5 shadow-lg">
       <div className="col-1">
         <h4> {location.name}</h4>
       </div>
@@ -62,6 +63,7 @@ class LocationsList extends React.Component {
       </div>
       { makeButtons() }
     </li>
+    </div>
     );
   }
 }

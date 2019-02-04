@@ -58,7 +58,7 @@ class LocationsForm extends React.Component {
     const { newLocation } = this.state;
     // const { isEditing } = this.props;
     return (
-      <div className="event-form col">
+      <div className="event-form col mt-5">
       <form onSubmit={this.formSubmit}>
           <div className="form-group ">
             <label htmlFor="event"></label>
@@ -72,7 +72,7 @@ class LocationsForm extends React.Component {
               onChange={this.nameChange}
             />
           </div>
-          <button className="btn btn-outline-light">Save</button>
+          <button className="btn btn-outline-light btn-lg">Save</button>
         </form>
       </div>
     );

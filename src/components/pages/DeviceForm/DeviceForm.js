@@ -74,7 +74,7 @@ class DeviceForm extends React.Component {
       return <h2>Add Device:</h2>;
     };
     return (
-      <div className="event-form col">
+      <div className="event-form col container">
         {title()}
         <form onSubmit={this.formSubmit}>
           <div className="form-group">
@@ -125,7 +125,7 @@ class DeviceForm extends React.Component {
               onChange={this.typeChange}
             />
           </div>
-          <button className="btn btn-outline-light">Save</button>
+          <button className="btn btn-outline-light btn-lg">Save</button>
         </form>
       </div>
     );

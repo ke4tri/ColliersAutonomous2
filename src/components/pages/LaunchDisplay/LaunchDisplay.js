@@ -19,14 +19,13 @@ render() {
 
   return (
       <div className="wrapperNumOne">
-        <div className='Home mx-auto'>
-          <h2>LaunchDisplay</h2>
-          <div>{currentDevice.name}</div>
-          <div>{currentLocation.name}</div>
-          <div>{currentRoute.cmd}</div>
+        <div className='Home mx-auto mt-4'>
+          <div><h2>DEVICE: {currentDevice.name}</h2></div>
+          <div><h2>LOCATION: {currentLocation.name}</h2></div>
+          <div><h2>ROUTE: {currentRoute.cmd}</h2></div>
         </div>
-        <div>
-          <button className="btn btn-outline-success" onClick={this.launchThis}>LAUNCH</button>
+        <div className="mb-4 mt-4">
+          <button id="launch" className="btn btn-outline-success btn-lg" onClick={this.launchThis}>LAUNCH</button>
         </div>
       </div>
   );
