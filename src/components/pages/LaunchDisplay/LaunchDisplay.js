@@ -1,19 +1,8 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
-// import smashRequest from '../../../helpers/data/smashRequest';
 import './LaunchDisplay.scss';
 
 class LaunchDisplay extends React.Component {
-  // static propTypes = {
-  //   activeDevice: PropTypes.string,
-  //   activeLocation: PropTypes.string,
-  //   activeRoute: PropTypes.string,
-  //   newUid: PropTypes.string,
-  // };
-
-
   componentDidMount() {
-    // this.device();
   }
 
 launchThis = () => {

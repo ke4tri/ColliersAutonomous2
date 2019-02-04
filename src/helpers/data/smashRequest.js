@@ -3,9 +3,6 @@ import apiKeys from '../apiKeys';
 
 const firebaseUrl = apiKeys.firebaseConfig.databaseURL;
 
-// one function that look in the users ddata and if == currentdevice then call the se
-// second function in line that makes the call to find that device name
-
 const getUid = uid => new Promise((resolve, reject) => {
   axios.get(`${firebaseUrl}/users.json?orderBy="uid"&equalTo="${uid}"`)
     .then((result) => {
@@ -15,7 +12,6 @@ const getUid = uid => new Promise((resolve, reject) => {
         Object.values(usersObject).forEach((itemId) => {
           usersObject[itemId] = itemId;
           usersArray.push(usersObject[itemId]);
-          console.log(itemId);
         });
       }
       resolve(usersArray);
@@ -47,13 +43,6 @@ const getDevicesById =uid => new Promise((resolve, reject) => {
   axios.get(`${firebaseUrl}/devices.json?orderBy="uid"&equalTo="${uid}"`)
     .then((result) => {
       const currentDeviceObject = result.data;
-      // const devicesArray = [];
-      // if (devicesObject != null) {
-      //   Object.keys(devicesObject).forEach((devicesId) => {
-      //     devicesObject[devicesId].id = devicesId;
-      //     devicesArray.push(devicesObject[devicesId]);
-      //   });
-      // }
       resolve(currentDeviceObject);
     })
     .catch((error) => {
@@ -76,5 +65,3 @@ export default {
   getSingleLocation,
   getSingleRoute,
 };
-
-// export default { getUid };

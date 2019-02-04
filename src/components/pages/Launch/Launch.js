@@ -1,6 +1,5 @@
 import React from 'react';
 import smashRequest from '../../../helpers/data/smashRequest';
-// import deviceRequest from '../../../helpers/data/deviceRequest';
 import authRequests from '../../../helpers/data/authRequest';
 import LaunchDisplay from '../LaunchDisplay/LaunchDisplay';
 import './Launch.scss';
@@ -17,7 +16,6 @@ class Launch extends React.Component {
     myCurrentRoute: [],
   }
 
-  // need to setState for all currents below
   getSomeUser = () => {
     const newUid = authRequests.getCurrentUid();
     this.setState({ newUid });
@@ -43,7 +41,6 @@ class Launch extends React.Component {
       .then((currentDevice) => {
         const myCurrentDevice = currentDevice.data;
         this.setState({ myCurrentDevice });
-        console.log(currentDevice.data);
       })
       .catch(err => console.error('error with getLocations', err));
   }
@@ -80,7 +77,6 @@ class Launch extends React.Component {
 
   componentDidMount() {
     this.getSomeUser();
-    // this.getcurrent();
   }
 
   render() {
