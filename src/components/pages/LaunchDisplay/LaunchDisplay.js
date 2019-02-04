@@ -11,24 +11,28 @@ class LaunchDisplay extends React.Component {
   //   newUid: PropTypes.string,
   // };
 
-  // device = () => {
-  //   const currentD = this.props.activeDevice;
-  //   smashRequest.getDevicesById(currentD)
-  //     .then((device) => {
-  //       // this.setState({ devicesArray });
-  //       console.log(device);
-  //     })
-  //     .catch(err => console.error('error with getLocations', err));
-  // }
 
   componentDidMount() {
     // this.device();
   }
 
   render() {
+    const {
+      currentDevice,
+      currentLocation,
+      currentRoute,
+    } = this.props;
     return (
-      <div className='Home mx-auto'>
-        <h2>LaunchDisplay</h2>
+      <div className="wrapperNumOne">
+        <div className='Home mx-auto'>
+          <h2>LaunchDisplay</h2>
+          <div>{currentDevice.name}</div>
+          <div>{currentLocation.name}</div>
+          <div>{currentRoute.cmd}</div>
+        </div>
+        <div>
+          <button className="btn btn-outline-success">LAUNCH</button>
+        </div>
       </div>
     );
   }

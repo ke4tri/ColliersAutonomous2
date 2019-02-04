@@ -63,12 +63,18 @@ const getDevicesById =uid => new Promise((resolve, reject) => {
 
 const getSingleDevice = deviceId => axios.get(`${firebaseUrl}/devices/${deviceId}.json`);
 
+const getSingleLocation = locationId => axios.get(`${firebaseUrl}/locations/${locationId}.json`);
+
+const getSingleRoute = routeId => axios.get(`${firebaseUrl}/routes/${routeId}.json`);
+
 
 export default {
   getUid,
   getCurrentDevice,
   getDevicesById,
   getSingleDevice,
+  getSingleLocation,
+  getSingleRoute,
 };
 
 // export default { getUid };

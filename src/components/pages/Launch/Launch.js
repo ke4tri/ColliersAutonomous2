@@ -12,6 +12,9 @@ class Launch extends React.Component {
     currentDeviceUid: '',
     currentLocationId: '',
     currentRouteId: '',
+    myCurrentDevice: [],
+    myCurrentLocation: [],
+    myCurrentRoute: [],
   }
 
   // need to setState for all currents below
@@ -28,6 +31,8 @@ class Launch extends React.Component {
         this.setState({ currentRouteId });
         this.setState({ usersArray });
         this.device();
+        this.location();
+        this.route();
       })
       .catch(err => console.error('error with getLocations', err));
   }
@@ -35,9 +40,30 @@ class Launch extends React.Component {
   device = () => {
     const currentD = this.state.currentDeviceUid;
     smashRequest.getSingleDevice(currentD)
-      .then((device) => {
-        // this.setState({ devicesArray });
-        console.log(device);
+      .then((currentDevice) => {
+        const myCurrentDevice = currentDevice.data;
+        this.setState({ myCurrentDevice });
+        console.log(currentDevice.data);
+      })
+      .catch(err => console.error('error with getLocations', err));
+  }
+
+  location = () => {
+    const currentL = this.state.currentLocationId;
+    smashRequest.getSingleLocation(currentL)
+      .then((currentLocation) => {
+        const myCurrentLocation = currentLocation.data;
+        this.setState({ myCurrentLocation });
+      })
+      .catch(err => console.error('error with getLocations', err));
+  }
+
+  route = () => {
+    const currentR = this.state.currentRouteId;
+    smashRequest.getSingleRoute(currentR)
+      .then((currentRoute) => {
+        const myCurrentRoute = currentRoute.data;
+        this.setState({ myCurrentRoute });
       })
       .catch(err => console.error('error with getLocations', err));
   }
@@ -66,6 +92,9 @@ class Launch extends React.Component {
           activeLocation={this.state.currentLocationId}
           activeRoute={this.state.currentRouteId}
           uid={this.state.newUid}
+          currentDevice={this.state.myCurrentDevice}
+          currentLocation={this.state.myCurrentLocation}
+          currentRoute={this.state.myCurrentRoute}
         />
       </div>
     );
