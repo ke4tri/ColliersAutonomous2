@@ -60,12 +60,12 @@ class RouteItem extends React.Component {
       <div className="row">
       </div>
       <div className="d-flex" role="alert">
-          <button className="btn btn-outline-lightl m-5 px-5" onClick={this.deleteSingleRoute}>
+          <button className="btn btn-outline-lightl px-2" onClick={this.deleteSingleRoute}>
             <i className="fas fa-trash-alt"></i>
           </button>
         </div>
         <div className="d-flex" role="alert">
-          <button className="btn btn-outline-lightl m-5 px-5" id={route.id} onClick={this.userRouteId}>
+          <button className="btn btn-outline-lightl px-2" id={route.id} onClick={this.userRouteId}>
             SET
           </button>
         </div>

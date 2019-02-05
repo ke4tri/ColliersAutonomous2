@@ -97,26 +97,26 @@ state = {
 
     return (
       <div className='LocationDetails mx-auto'>
-        <h2>Location Details</h2>
-        <div className="row">
-        <button className="btn btn-outline-light" onClick={this.changeView2}>Add Route</button>
-
-        <div className="row mr-1">
-          <ul>{ locationRoutes }</ul>
-        </div>
-        <div className="col mr-5">
-          <h2>Route Details</h2>
-          <ul>
-            <RouteEditDisplay
-              route={selectedRoute}
-              passRouteToEdit={passRouteToEdit}
-              changeView={this.changeView1}
-            />
-          </ul>
-          </div>
-          <button className="btn btn-outline-light" onClick={this.changeViewLaunch}>Launch Console</button>
-        </div>
+   <h2>Location Details</h2>
+   <div className="row container mx-auto">
+      <div className="row">
+      <button className="btn btn-outline-light" onClick={this.changeView2}>Add Route</button>
       </div>
+      <div className="row mr-1">
+         <ul>{ locationRoutes }</ul>
+      </div>
+      <div className="col containerThree">
+            <RouteEditDisplay
+               route={selectedRoute}
+               passRouteToEdit={passRouteToEdit}
+               changeView={this.changeView1}
+               />
+      </div>
+      <div className="row mx-auto">
+         <button className="btn btn-outline-light" onClick={this.changeViewLaunch}>Launch Console</button>
+      </div>
+   </div>
+</div>
     );
   }
 }
