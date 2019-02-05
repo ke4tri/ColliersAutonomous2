@@ -20,3 +20,17 @@
   
 ## Deployed URL
 [Colliers Autonomous](https://capstone-44b2b.firebaseapp.com/auth)
+
+## Setup Firebase
+  - Create a firebase project
+  - Enable 'Google Authentication'
+  - Create a Firebase Realtime Database (Not Firestore)
+  - Create an apiKeys.js file (an example file exists in the 'helpers' folder) -Copy firebase keys from firebase web app settings into apiKeys.js
+
+Clone or download the repo
+
+Browse to the repo directory in your terminal
+
+In the root of the project run npm install to install necessary dependencies
+
+npm start will run the project at http://localhost:3000
