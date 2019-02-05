@@ -56,7 +56,6 @@ class LocationsForm extends React.Component {
 
   render() {
     const { newLocation } = this.state;
-    // const { isEditing } = this.props;
     return (
       <div className="event-form col mt-5">
       <form onSubmit={this.formSubmit}>

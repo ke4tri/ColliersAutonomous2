@@ -14,24 +14,19 @@ class RouteEditDisplay extends React.Component {
       );
     }
     return (
-      <div className="col">
-        <div className="col">
-          <div className="col-2">
-          </div>
-          <div className="col">
+          <div className="col d-flex flex-column flex-wrap">
+          <h2>Route Details</h2>
             <div className="col">
-              Command: {route.cmd}
+             <h6> Command:   {route.cmd}</h6>
             </div>
             <div className="col">
-              lat, long: {route.latLong}
+            <h6>lat, long: {route.latLong}</h6>
               </div>
             <div className="col">
-              Orientation: {route.orientation}
+            <h6> Orientation: {route.orientation}</h6>
             </div>
-          </div>
           <button className="btn btn-outline-light" onClick={this.props.changeView}>EDIT</button>
-        </div>
-      </div>
+          </div>
     );
   }
 }
