@@ -1,13 +1,19 @@
 import React from 'react';
 import './LaunchDisplay.scss';
 
+import flyRequest from '../../../helpers/data/flyRequest';
+
 class LaunchDisplay extends React.Component {
   componentDidMount() {
   }
 
 launchThis = () => {
   const launchCmd = this.props.currentRoute.cmd;
-  console.log(launchCmd);
+  flyRequest.launch(launchCmd)
+    .then((res) => {
+      console.log(res);
+    })
+    .catch(err => console.error(err));
 }
 
 render() {
