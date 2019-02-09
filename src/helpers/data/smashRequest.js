@@ -39,7 +39,7 @@ const getCurrentDevice = uid => new Promise((resolve, reject) => {
     });
 });
 
-const getDevicesById =uid => new Promise((resolve, reject) => {
+const getDevicesById = uid => new Promise((resolve, reject) => {
   axios.get(`${firebaseUrl}/devices.json?orderBy="uid"&equalTo="${uid}"`)
     .then((result) => {
       const currentDeviceObject = result.data;

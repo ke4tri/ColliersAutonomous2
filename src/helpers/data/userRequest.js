@@ -14,7 +14,7 @@ const getUser = uid => new Promise((resolve, reject) => {
           usersArray.push(usersObject[usersId]);
         });
       }
-      resolve(usersArray);
+      resolve(usersArray[0]);
     })
     .catch((error) => {
       reject(error);
@@ -27,7 +27,7 @@ const postRequest = user => axios.post(`${firebaseUrl}/users.json`, user);
 
 const getSingleUsersItemId = userId => axios.get(`${firebaseUrl}/user/${userId}.json`);
 
-const patchRequest = (usersId, currentDeviceUid) => axios.patch(`${firebaseUrl}/users/${usersId}.json`, { currentDeviceUid });
+const patchRequest = (usersId, currentDeviceId) => axios.patch(`${firebaseUrl}/users/${usersId}.json`, { currentDeviceId });
 
 const putRequest = (usersId, user) => axios.put(`${firebaseUrl}/users/${usersId}.json`, user);
 

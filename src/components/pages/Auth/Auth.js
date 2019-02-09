@@ -1,16 +1,9 @@
 /* eslint-disable max-len */
 import React from 'react';
-import authRequests from '../../../helpers/data/authRequest';
 import './Auth.scss';
 
 
 class Auth extends React.Component {
-  authenticateUser = (e) => {
-    e.preventDefault();
-    authRequests.authenticate().then(() => {
-      this.props.history.push('/devices');
-    }).catch(err => console.error('error in auth', err));
-  }
 
   render() {
     return (

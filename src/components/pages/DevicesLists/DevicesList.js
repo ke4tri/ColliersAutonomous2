@@ -47,9 +47,12 @@ class DevicesList extends React.Component {
   userDeviceId = (e) => {
     e.preventDefault();
     const deviceId = e.target.id;
-    const newUid = authRequests.getCurrentUid();
-    userRequest.patchRequest(newUid, deviceId);
-    this.props.changeView();
+    const uid = authRequests.getCurrentUid();
+    userRequest.getUser(uid).then((userRes) => {
+      userRequest.patchRequest(userRes.id, deviceId).then(() => {
+        this.props.changeView();
+      });
+    });
   };
 
   render() {
