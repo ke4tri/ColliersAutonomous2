@@ -45,9 +45,15 @@ class RouteItem extends React.Component {
   userRouteId = (e) => {
     e.preventDefault();
     const routeId = e.target.id;
-    const newUid = authRequests.getCurrentUid();
-    userRequest.patchRequestRoute(newUid, routeId);
-    this.props.changeView();
+    // const newUid = authRequests.getCurrentUid();
+    // userRequest.patchRequestRoute(newUid, routeId);
+    //
+    const uid = authRequests.getCurrentUid();
+    userRequest.getUser(uid).then((userRes) => {
+      userRequest.patchRequestRoute(userRes.id, routeId).then(() => {
+        this.props.changeView();
+      });
+    });
   };
 
   render() {

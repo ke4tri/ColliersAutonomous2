@@ -55,13 +55,13 @@
   "users" : {
     "user1" : {
       "uid" : "Dn7eJcqxX5asjVy2Z7SF3xUEMxe2",
-      "currentDeviceUId" : "device1",
+      "currentDeviceId" : "device1",
       "currentLocationId" : "location1",
       "currentRouteId" : "route1"
     },
     "user2" : {
       "uid" : "1234",
-      "currentDeviceUId" : "1234",
+      "currentDeviceId" : "1234",
       "currentLocationId" : "1234",
       "currentRouteId" : "1234"
     }

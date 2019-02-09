@@ -29,9 +29,12 @@ class LocationsList extends React.Component {
   userLocationId = (e) => {
     e.preventDefault();
     const locationId = e.target.id;
-    const newUid = authRequests.getCurrentUid();
-    userRequest.patchRequestLoc(newUid, locationId);
-    this.listingClick();
+    const uid = authRequests.getCurrentUid();
+    userRequest.getUser(uid).then((userRes) => {
+      userRequest.patchRequestLoc(userRes.id, locationId).then(() => {
+        this.listingClick();
+      });
+    });
   };
 
   render() {

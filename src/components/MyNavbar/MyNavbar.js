@@ -33,7 +33,7 @@ class MyNavbar extends React.Component {
         if (!userRes) {
           const newUser = {
             uid,
-            currentDeviceUId: '',
+            currentDeviceId: '',
             currentLocationId: '',
             currentRouteId: '',
           };
