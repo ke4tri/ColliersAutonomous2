@@ -13,6 +13,7 @@ import {
 import authRequests from '../../helpers/data/authRequest';
 
 import './MyNavbar.scss';
+import userRequest from '../../helpers/data/userRequest';
 
 class MyNavbar extends React.Component {
   static propTypes = {
@@ -24,17 +25,24 @@ class MyNavbar extends React.Component {
     isOpen: false,
   };
 
-  // changeView = () => {
-  //   this.props.history.push('/about');
-  // }
-
   authenticateUser = (e) => {
     e.preventDefault();
-    authRequests.authenticate().then(() => {
-      // this is going to need to change to page with button to take to launch
-      // this.props.history.push('/devices');
+    authRequests.authenticate().then((res) => {
+      const { uid } = res.user;
+      userRequest.getUser(uid).then((userRes) => {
+        if (!userRes) {
+          const newUser = {
+            uid,
+            currentDeviceUId: '',
+            currentLocationId: '',
+            currentRouteId: '',
+          };
+          userRequest.postRequest(newUser);
+        }
+      });
     }).catch(err => console.error('error in auth', err));
   }
+
 
   toggle() {
     this.setState({
@@ -82,7 +90,7 @@ class MyNavbar extends React.Component {
     return (
       <div className="myNavbar">
       <Navbar color="dark" dark expand="md">
-          <NavbarBrand href="/"><img src="https://github.com/ke4tri/personal-bi-site2/blob/master/src/img/logo2.png?raw=true" width={600} height={50}></img></NavbarBrand>
+          <NavbarBrand href="/"><img src="https://github.com/ke4tri/personal-bi-site2/blob/master/src/img/logo2.png?raw=true" width={600} height={50} alt="propellers"></img></NavbarBrand>
           <NavbarToggler onClick={e => this.toggle(e)} />
           <Collapse isOpen={this.state.isOpen} navbar>
             {buildNavbar()}

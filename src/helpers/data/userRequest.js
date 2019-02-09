@@ -14,7 +14,7 @@ const getUser = uid => new Promise((resolve, reject) => {
           usersArray.push(usersObject[usersId]);
         });
       }
-      resolve(usersArray);
+      resolve(usersArray[0]);
     })
     .catch((error) => {
       reject(error);
