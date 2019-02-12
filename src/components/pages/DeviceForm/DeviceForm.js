@@ -74,14 +74,14 @@ class DeviceForm extends React.Component {
       return <h2>Add Device:</h2>;
     };
     return (
-      <div className="event-form col container">
+      <div className="event-form col container3">
         {title()}
         <form onSubmit={this.formSubmit}>
-          <div className="form-group">
+          <div className="">
             <label htmlFor="event"></label>
             <input
               type="text"
-              className="form-control"
+              className=""
               id="name"
               aria-describedby="eventHelp"
               placeholder="Device Name"
@@ -89,11 +89,11 @@ class DeviceForm extends React.Component {
               onChange={this.nameChange}
             />
           </div>
-          <div className="form-group">
+          <div className="">
             <label htmlFor="location"></label>
             <input
               type="text"
-              className="form-control"
+              className=""
               id="faaSerial"
               aria-describedby="locationHelp"
               placeholder="FAA Serial Number"
@@ -101,11 +101,11 @@ class DeviceForm extends React.Component {
               onChange={this.faaSerialChange}
             />
           </div>
-          <div className="form-group">
+          <div className="">
             <label htmlFor="manufacture"></label>
             <input
               type="text"
-              className="form-control"
+              className=""
               id="manufacture"
               aria-describedby="locationHelp"
               placeholder="Manufacture Name"
@@ -113,11 +113,11 @@ class DeviceForm extends React.Component {
               onChange={this.manufactureChange}
             />
           </div>
-          <div className="form-group">
+          <div className="">
             <label htmlFor="type"></label>
             <input
               type="text"
-              className="form-control"
+              className=""
               id="type"
               aria-describedby="locationHelp"
               placeholder="Device Type"
@@ -125,7 +125,7 @@ class DeviceForm extends React.Component {
               onChange={this.typeChange}
             />
           </div>
-          <button className="btn btn-outline-light btn-lg">Save</button>
+          <button className="btn btn-outline-light btn-lg mt-2 mb-2">Save</button>
         </form>
       </div>
     );
