@@ -1,3 +1,4 @@
+const apiKeys = {
  firebaseConfig: {
     apiKey: '',
     authDomain: '',
