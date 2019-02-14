@@ -62,7 +62,7 @@ class DevicesList extends React.Component {
     const makeButtons = () => {
       if (device.uid === uid) {
         return (
-          <div className="d-flex row" role="alert">
+          <div className="d-flex row ml-5" role="alert">
             <button className="btn btn-outline-dark" onClick={this.editDevice}>
               <i className="fas fa-pencil-alt"></i>
             </button>
