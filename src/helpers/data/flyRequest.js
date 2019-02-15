@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 const launch = launchCmd => new Promise((resolve, reject) => {
-  axios.post('http://localhost:5000/launch', JSON.stringify({ command: launchCmd }))
+  const flyCommand = { command: launchCmd };
+  axios.post('http://localhost:5000/launch', flyCommand)
     .then((result) => {
       resolve(result);
     })

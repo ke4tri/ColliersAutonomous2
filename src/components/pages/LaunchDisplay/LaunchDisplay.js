@@ -9,11 +9,7 @@ class LaunchDisplay extends React.Component {
 
 launchThis = () => {
   const launchCmd = this.props.currentRoute.cmd;
-  flyRequest.launch(launchCmd)
-    .then((res) => {
-      console.log(res);
-    })
-    .catch(err => console.error(err));
+  flyRequest.launch(launchCmd);
 }
 
 render() {
