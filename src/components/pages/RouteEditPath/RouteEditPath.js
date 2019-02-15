@@ -91,18 +91,18 @@ class RouteEditPath extends React.Component {
           <div className="wrapButton">
             <div className="btn-group d-flex justify-content-center">
               <button type="button" className="taco btn btn-outline-light m-2 p-3" value="command,takeoff">TAKE OFF</button>
-              <button type="button" className="taco btn btn-outline-light m-2 p-3" value="up20">UP</button>
+              <button type="button" className="taco btn btn-outline-light m-2 p-3" value="up 20">UP</button>
               <button type="button" className="taco btn btn-outline-light m-2 p-3" value="land">LAND</button>
             </div>
             <div className="btn-group d-flex justify-content-center">
-              <button type="button" className="btn btn-outline-light m-2 p-3" value="90cw">90CW</button>
+              <button type="button" className="btn btn-outline-light m-2 p-3" value="cw 90">90CW</button>
               <button type="button" className="btn btn-outline-light m-2 p-3" value="photo">PHOTO</button>
-              <button type="button" className="btn btn-outline-light m-2 p-3" value="90ccw">90CCW</button>
+              <button type="button" className="btn btn-outline-light m-2 p-3" value="ccw 90">90CCW</button>
             </div>
             <div className="btn-group d-flex justify-content-center">
-              <button type="button" className="taco2 btn btn-outline-light m-2 p-3" value="forward20">FORWARD</button>
-              <button type="button" className="taco2 btn btn-outline-light m-2 p-3" value="down20">DOWN</button>
-              <button type="button" className="taco2 btn btn-outline-light m-2 p-3" value="back20">BACK</button>
+              <button type="button" className="taco2 btn btn-outline-light m-2 p-3" value="forward 20">FORWARD</button>
+              <button type="button" className="taco2 btn btn-outline-light m-2 p-3" value="down 20">DOWN</button>
+              <button type="button" className="taco2 btn btn-outline-light m-2 p-3" value="back 20">BACK</button>
             </div>
           </div>
           </form>
