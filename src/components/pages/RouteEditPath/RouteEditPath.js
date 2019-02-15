@@ -59,6 +59,7 @@ class RouteEditPath extends React.Component {
   cmdChange = (e) => {
     e.preventDefault();
     const currentCommand2 = this.state.currentCommand;
+    console.log(currentCommand2);
     currentCommand2.push(e.target.value);
     this.setState({ currentCommand: currentCommand2 });
   }
