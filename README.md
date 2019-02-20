@@ -34,3 +34,17 @@ Browse to the repo directory in your terminal
 In the root of the project run npm install to install necessary dependencies
 
 npm start will run the project at http://localhost:3000
+
+## Node.js Server
+
+You will need to clone this repo.
+https://github.com/ke4tri/nodeFlyer
+  - To install dependences
+```
+npm install
+```
+
+ - To start the server
+```
+npm start
+```
