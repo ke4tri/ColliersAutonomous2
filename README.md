@@ -1,7 +1,7 @@
 # Colliers Autonomous
-### This is my front-end capstone for Nashville Software School.  Colliers Autonomous is a first step at Drone/Rover automation. 
+### This is my front-end capstone for Nashville Software School.  Colliers Autonomous is the first step at Drone/Rover automation for myself. 
 
-### Users will currently be guided throught the steps to acheave connection to the IBM Tello over wifi.  Users will then be presented with the ablility to create routes for specific locations created by the user.  
+### Users will currently be guided through the steps to achieve connection to the IBM Tello over wifi. Users will then be presented with the ability to create routes for specific locations created by the user. 
 
 ## Tech Requirements
   - React.js
