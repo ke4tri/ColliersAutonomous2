@@ -91,7 +91,7 @@ class RouteEditPath extends React.Component {
           <form onClick={this.cmdChange}>
           <div className="wrapButton">
             <div className="btn-group d-flex justify-content-center">
-              <button type="button" className="taco btn btn-outline-light m-2 p-3" value="command,takeoff">TAKE OFF</button>
+              <button type="button" className="taco btn btn-outline-light m-2 p-3" value="command,battery?,takeoff">TAKE OFF</button>
               <button type="button" className="taco btn btn-outline-light m-2 p-3" value="up 20">UP</button>
               <button type="button" className="taco btn btn-outline-light m-2 p-3" value="land">LAND</button>
             </div>
