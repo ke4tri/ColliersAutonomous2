@@ -78,10 +78,6 @@ animation:spin 3s linear infinite;
 
   .slogan2 {
     display: block !important;
-    width: 500px !important;
-    height: 500px !important;
-    margin-left: -90px !important;
-    margin-top: -400px !important;
   }
 
   .slogan {
@@ -126,17 +122,18 @@ animation:spin 3s linear infinite;
   .hero-logo-circle:nth-child(8) {
     animation-duration: 0s;
   }
+
+  .hero-logo-circle:nth-child(9) {
+    animation-duration: 0s;
+  }
   
   .hero-logo-circle {
-    // position: absolute;
     top: 400px;
     left: 20%;
     min-width: 200px;
     max-width: 500px;
     height: auto;
     margin:-30px 0 0 -30px;
-    // -webkit-animation:spin 0s linear infinite;
-    // -moz-animation:spin os linear infinite;
     animation:spin 0s linear infinite;
   }
 }
