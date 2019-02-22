@@ -4,7 +4,6 @@ import './Auth.scss';
 
 
 class Auth extends React.Component {
-
   render() {
     return (
       <div className='Auth mx-auto styleDiv'>
@@ -17,6 +16,8 @@ class Auth extends React.Component {
             <img className="hero-logo-circle" src="https://github.com/ke4tri/personal-bi-site2/blob/master/src/img/prop1.png?raw=true" alt="Index portal blue"/>
             <img className="hero-logo-circle" src="https://github.com/ke4tri/personal-bi-site2/blob/master/src/img/prop2.png?raw=true" alt="Index portal blue"/>
             <img className="hero-logo-circle slogan" src="https://github.com/ke4tri/Images/blob/master/slogan_use.png?raw=true" alt="Index portal blue"/>
+            {/* <img className="hero-logo-circle slogan2" src="https://github.com/ke4tri/Images/blob/master/slogan_use.png?raw=true" alt="Index portal"/> */}
+            <h2 className="hero-logo-circle">"Taking Drones to a Higher Level"</h2>
         </div>
       </div>
     );
