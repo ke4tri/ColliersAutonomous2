@@ -128,8 +128,78 @@ animation:spin 3s linear infinite;
   }
   
   .hero-logo-circle {
-    top: 400px;
+    top: 300px;
     left: 20%;
+    min-width: 200px;
+    max-width: 500px;
+    height: auto;
+    margin:-30px 0 0 -30px;
+    animation:spin 0s linear infinite;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  body {
+    background-color: gray !important;
+    background-image: url("../Auth/Images/pbi-ils-loc-27r.png");
+    background-repeat: no-repeat, repeat;
+    background-size: cover;
+  }
+
+  .slogan2 {
+    display: block !important;
+  }
+
+  .slogan {
+    display: none !important;
+  }
+  
+  .hero-logo-circle:nth-child(1) {
+    animation-duration: 0s;
+    display: none;
+  }
+  
+  .hero-logo-circle:nth-child(2) {
+    animation-duration: 0s;
+    display: none;
+  }
+  
+  .hero-logo-circle:nth-child(3) {
+    animation-duration: 0s;
+    display: none;
+  }
+  
+  .hero-logo-circle:nth-child(4) {
+    animation-duration: 0s;
+    display: none;
+  }
+  
+  .hero-logo-circle:nth-child(5) {
+    animation-duration: 0s;
+    display: none;
+  }
+  
+  .hero-logo-circle:nth-child(6) {
+    animation-duration: 0s;
+    display: none;
+  }
+  
+  .hero-logo-circle:nth-child(7) {
+    animation-duration: 0s;
+    display: none;
+  }
+  
+  .hero-logo-circle:nth-child(8) {
+    animation-duration: 0s;
+  }
+
+  .hero-logo-circle:nth-child(9) {
+    animation-duration: 0s;
+  }
+  
+  .hero-logo-circle {
+    top: 300px;
+    left: 1%;
     min-width: 200px;
     max-width: 500px;
     height: auto;
