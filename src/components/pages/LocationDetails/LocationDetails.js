@@ -99,7 +99,7 @@ state = {
       <div className='LocationDetails mx-auto'>
    <h2>Location Details</h2>
    <div className="row container mx-auto">
-      <div className="row">
+      <div className="col mb-3">
       <button className="btn btn-outline-light" onClick={this.changeView2}>Add Route</button>
       </div>
       <div className="row mr-1">
@@ -112,9 +112,9 @@ state = {
                changeView={this.changeView1}
                />
       </div>
-      <div className="row mx-auto">
+      {/* <div className="row mx-auto">
          <button className="btn btn-outline-light" onClick={this.changeViewLaunch}>Launch Console</button>
-      </div>
+      </div> */}
    </div>
 </div>
     );

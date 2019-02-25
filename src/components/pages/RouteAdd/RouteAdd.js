@@ -69,7 +69,7 @@ class RouteAdd extends React.Component {
     return (
       <div className="everythingIn mx-auto">
         <div className='Home mx-auto'>
-        <h2>Add Route</h2>
+        <h2 className="addButton">Add Route</h2>
           <form onClick={this.cmdChange}>
           <div className="wrapButton">
             <div className="btn-group d-flex justify-content-center">

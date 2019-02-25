@@ -74,17 +74,19 @@ class Launch extends React.Component {
 
   render() {
     return (
-      <div className='Home mx-auto mt-4'>
-        <h1><u>Launch Console</u></h1>
-        <LaunchDisplay
-          activeDevice={this.state.currentDeviceId}
-          activeLocation={this.state.currentLocationId}
-          activeRoute={this.state.currentRouteId}
-          uid={this.state.newUid}
-          currentDevice={this.state.myCurrentDevice}
-          currentLocation={this.state.myCurrentLocation}
-          currentRoute={this.state.myCurrentRoute}
-        />
+      <div className="shrinkLaunch mx-auto">
+        <div className='Home mx-auto mt-4'>
+          <h1><u>Launch Console</u></h1>
+          <LaunchDisplay
+            activeDevice={this.state.currentDeviceId}
+            activeLocation={this.state.currentLocationId}
+            activeRoute={this.state.currentRouteId}
+            uid={this.state.newUid}
+            currentDevice={this.state.myCurrentDevice}
+            currentLocation={this.state.myCurrentLocation}
+            currentRoute={this.state.myCurrentRoute}
+          />
+        </div>
       </div>
     );
   }
