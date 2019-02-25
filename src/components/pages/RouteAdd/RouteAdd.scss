@@ -1,0 +1,24 @@
+
+@media only screen and (max-width: 500px) {
+
+  .everythingIn {
+    display: flex !important;
+    justify-content: center !important;
+  }
+
+  .addButton {
+    margin-left: 50% !important;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+
+  .everythingIn {
+    display: flex !important;
+    justify-content: center !important;
+  }
+  
+  .addButton {
+    margin-left: 50% !important;
+  }
+}

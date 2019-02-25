@@ -5,14 +5,6 @@ import userRequest from '../../../helpers/data/userRequest';
 import './RouteItem.scss';
 
 class RouteItem extends React.Component {
-  // TODO:  add proptype for route and make routeShape
-  // static propTypes = {
-  //   locationId: PropTypes.string,
-  //   getSomeData2: PropTypes.func,
-  //   route: routeShape,
-  //   onListingSelection: PropTypes.func,
-  //   deleteSingleRoute: PropTypes.func,
-  // };
 
   listingClick = (e) => {
     e.stopPropagation();
@@ -45,9 +37,6 @@ class RouteItem extends React.Component {
   userRouteId = (e) => {
     e.preventDefault();
     const routeId = e.target.id;
-    // const newUid = authRequests.getCurrentUid();
-    // userRequest.patchRequestRoute(newUid, routeId);
-    //
     const uid = authRequests.getCurrentUid();
     userRequest.getUser(uid).then((userRes) => {
       userRequest.patchRequestRoute(userRes.id, routeId).then(() => {
